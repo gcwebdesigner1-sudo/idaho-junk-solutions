@@ -7,6 +7,10 @@
 <meta name="description" content="Junk removal in Boise, Meridian, Nampa and Caldwell. Priced by the load, confirmed on site before we start. Same-day pickup when available. Call or text (208) 598-1065.">
 <!-- Preview copy: keep out of Google until it moves to his own domain. Remove this line at launch. -->
 <meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0F3D26">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -207,6 +211,7 @@ form { background: var(--card); border: 1px solid var(--line); border-radius: 14
 .f textarea { min-height: 92px; resize: vertical; }
 form .btn { grid-column: 1 / -1; }
 .ready { grid-column: 1 / -1; background: #FBE6D3; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.ready[hidden] { display: none; }
 .ready pre { margin: 0; white-space: pre-wrap; font: 500 1rem var(--text); background: #fff; border-radius: 8px; padding: 12px; }
 @media (max-width: 860px) { .quote .wrap { grid-template-columns: 1fr; gap: 28px; } }
 @media (max-width: 520px) { form { grid-template-columns: 1fr; padding: 20px; } }
@@ -240,6 +245,61 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
   .reveal { animation: none; }
   .fill, .btn { transition: none; }
 }
+
+/* Hero planes: photo (back), sun, ridge, pines (front). Each moves at its own rate. */
+.hero { overflow: hidden; }
+.hero-sun { position: absolute; left: 58%; bottom: 40px; width: 230px; height: 230px; border-radius: 50%; background: radial-gradient(circle at 50% 45%, #FF9A4D, #F26A1B 70%); box-shadow: 0 0 90px 30px rgba(242,106,27,.35); animation: sunUp 2.2s cubic-bezier(.2,.7,.2,1) both; will-change: transform; }
+@keyframes sunUp { from { translate: 0 160px; } to { translate: 0 0; } }
+.hero-ridge { position: absolute; left: -2%; bottom: -2px; width: 104%; height: 170px; display: block; will-change: transform; }
+.hero-pines { position: absolute; bottom: -6px; height: 250px; width: auto; will-change: transform; }
+.hero-pines.l { left: -30px; }
+.hero-pines.r { right: -20px; height: 200px; transform: scaleX(-1); }
+.hero .wrap { padding-top: 64px; padding-bottom: 180px; }
+.hero h1 { font-size: clamp(2.9rem, 6.6vw, 5rem); max-width: 14ch; }
+.hero .wrap, .price-card { z-index: 4; }
+.price-card { bottom: 34px; }
+.trust { padding-top: 56px; }
+@media (max-width: 760px) {
+  .hero-sun { width: 130px; height: 130px; left: 55%; bottom: 150px; }
+  .hero-ridge { height: 90px; }
+  .hero-pines { height: 130px; } .hero-pines.r { height: 105px; }
+  .hero .wrap { padding-top: 48px; padding-bottom: 60px; }
+  .hero { overflow: visible; margin-bottom: 0; padding-bottom: 150px; }
+  .price-card { transform: none; margin: 0 20px; bottom: auto; }
+  .trust { padding-top: 40px; }
+}
+
+/* Photo strip: drifts sideways with the scroll on desktop, swipes on phones */
+.strip { margin-top: 64px; overflow: hidden; }
+.strip-track { display: flex; gap: 16px; width: max-content; padding: 0 20px; will-change: transform; }
+.strip figure { margin: 0; flex: none; width: 270px; aspect-ratio: 3/4; border-radius: 12px; overflow: hidden; background: #222; }
+.strip img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 760px) { .strip { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; } .strip figure { width: 70vw; scroll-snap-align: center; } }
+
+/* How it works: a line that draws across the four steps */
+.steps-line { height: 6px; background: var(--line); border-radius: 3px; margin-bottom: 22px; overflow: hidden; }
+.steps-line i { display: block; height: 100%; background: var(--orange); transform-origin: 0 50%; transform: scaleX(var(--p, 1)); }
+.step { transition: border-color .3s ease, transform .3s ease; }
+.steps.live .step { border-color: var(--line); }
+.steps.live .step.on { border-color: var(--orange); transform: translateY(-4px); }
+.steps.live .step:not(.on)::before { color: #B9B3A3; }
+@media (max-width: 900px) { .steps-line { display: none; } }
+
+/* Pricing pin: the section holds still while the scroll fills the trailer */
+.pricing.pin-on { padding: 0; }
+.pin-on .pin-track { height: 260vh; }
+.pin-on .pin-stick { position: sticky; top: 76px; height: calc(100vh - 76px); display: flex; align-items: center; }
+.pin-on .head { margin-bottom: 24px; }
+.pin-on .calc-controls { gap: 18px; }
+.junk { position: absolute; bottom: 0; left: 0; right: 0; height: 100%; pointer-events: none; }
+.junk span { position: absolute; bottom: 0; border-radius: 4px; opacity: 0; transform: translateY(-60px) rotate(var(--r, 0deg)); transition: opacity .35s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
+.junk span.in { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-sun { animation: none; }
+  .junk span { transition: none; }
+  .step { transition: none; }
+}
 </style>
 </head>
 <body>
@@ -266,6 +326,10 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 <section class="hero on-dark">
   <div class="hero-photo"><img id="heroImg" src="images/job-07.jpg" alt="Idaho Junk Solutions dump trailer loaded with boxes and junk in a Treasure Valley driveway"></div>
   <div class="hero-shade"></div>
+  <div class="hero-sun" id="heroSun" aria-hidden="true"></div>
+  <svg class="hero-ridge" id="heroRidge" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true"><path d="M0 170V118l110-52 84 40 132-92 120 78 96-48 150 86 128-104 140 96 112-60 124 70 120-46 124 38v86z" fill="#F7F5EF"/></svg>
+  <svg class="hero-pines l" id="pinesL" viewBox="-10 0 330 230" aria-hidden="true" fill="#0F3D26"><g transform="translate(0 0)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g><g transform="translate(110 60) scale(.74)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g><g transform="translate(200 96) scale(.58)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g></svg>
+  <svg class="hero-pines r" id="pinesR" viewBox="-10 0 330 230" aria-hidden="true" fill="#17573A"><g transform="translate(0 0)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g><g transform="translate(110 60) scale(.74)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g><g transform="translate(200 96) scale(.58)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g></svg>
   <div class="wrap">
     <p class="kicker reveal">Boise · Meridian · Nampa · Caldwell</p>
     <h1 class="reveal r2">Junk removal in Boise, <span>priced by the load</span></h1>
@@ -296,7 +360,7 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 <section id="services">
   <div class="wrap">
     <div class="head">
-      <p class="kicker">What we do</p>
+      
       <h2>From one item to the jobs nobody wants</h2>
     </div>
     <div class="services">
@@ -327,7 +391,7 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 <section id="work" class="ba">
   <div class="wrap">
     <div class="ba-copy">
-      <p class="kicker">Our work</p>
+      
       <h2>A real garage, before and after</h2>
       <p>This is one of our jobs in the Treasure Valley, not a stock photo. Scroll, or drag the slider, to clear it out.</p>
       <ul>
@@ -344,6 +408,19 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
         <span class="ba-tag b">Before</span><span class="ba-tag a">After</span>
       </div>
       <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+    </div>
+  </div>
+
+  <div class="strip" id="strip" aria-label="More photos from real jobs">
+    <div class="strip-track" id="stripTrack">
+      <figure><img src="images/job-09.jpg" alt="Dump trailer loaded with demolition debris" loading="lazy"></figure>
+      <figure><img src="images/job-03.jpg" alt="Garage corner mostly cleared, a few boxes left to load" loading="lazy"></figure>
+      <figure><img src="images/job-04.jpg" alt="Pile of construction debris beside a house before removal" loading="lazy"></figure>
+      <figure><img src="images/job-08.jpg" alt="Yard cleared of debris in front of a house" loading="lazy"></figure>
+      <figure><img src="images/job-05.jpg" alt="Dump trailer tipping a load at the landfill" loading="lazy"></figure>
+      <figure><img src="images/job-11.jpg" alt="Garage with the last few items stacked for pickup" loading="lazy"></figure>
+      <figure><img src="images/job-12.jpg" alt="Dump trailer raised and unloading" loading="lazy"></figure>
+      <figure><img src="images/job-13.jpg" alt="Cleared lot beside farm buildings after a cleanout" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -373,10 +450,11 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 <section id="how">
   <div class="wrap">
     <div class="head">
-      <p class="kicker">How it works</p>
+      
       <h2>Four steps, no surprises</h2>
     </div>
-    <div class="steps">
+    <div class="steps-line" aria-hidden="true"><i id="stepsLine"></i></div>
+    <div class="steps" id="steps">
       <div class="step"><h3>See the load price</h3><p>Use the calculator below, or text us a photo and we’ll tell you the load size.</p></div>
       <div class="step"><h3>Book a time</h3><p>Call, text or send the form. Same-day pickup when we have room.</p></div>
       <div class="step"><h3>We arrive on time</h3><p>You get a one-hour arrival window and an ETA update on the way.</p></div>
@@ -386,11 +464,12 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 </section>
 
 <section id="pricing" class="pricing on-dark">
+ <div class="pin-track" id="pinTrack"><div class="pin-stick">
   <div class="wrap">
     <div class="head">
       <p class="kicker">Pricing</p>
       <h2>Price your load</h2>
-      <p>Our trailer holds 14 cubic yards. Pick how full you think it will be and how easy the junk is to reach.</p>
+      <p id="calcHint">Our trailer holds 14 cubic yards. Pick how full you think it will be and how easy the junk is to reach.</p>
     </div>
     <div class="calc">
       <div class="calc-controls">
@@ -417,6 +496,15 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
       <div class="trailer" aria-hidden="true">
         <div class="bed" id="bed">
           <div class="fill"></div>
+          <div class="junk" id="junk">
+            <span style="left:6%;width:17%;height:22%;background:#8A5A2B;--r:-3deg"></span>
+            <span style="left:26%;width:24%;height:17%;background:#5E7C8A;--r:2deg"></span>
+            <span style="left:54%;width:15%;height:30%;background:#E9E4D8;--r:1deg"></span>
+            <span style="left:72%;width:20%;height:20%;background:#8A5A2B;--r:-2deg"></span>
+            <span style="left:12%;width:26%;height:14%;bottom:30%;background:#B03A2E;--r:4deg"></span>
+            <span style="left:44%;width:20%;height:24%;bottom:36%;background:#8A5A2B;--r:-5deg"></span>
+            <span style="left:68%;width:22%;height:16%;bottom:52%;background:#5E7C8A;--r:3deg"></span>
+          </div>
           <div class="bed-marks"><i></i><i></i><i></i><i></i></div>
           <span class="bed-label" id="bedLabel">½ load</span>
         </div>
@@ -424,12 +512,13 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
       </div>
     </div>
   </div>
+ </div></div>
 </section>
 
 <section id="quote" class="quote">
   <div class="wrap">
     <div class="quote-copy">
-      <p class="kicker">Let’s get it gone</p>
+      
       <h2>Send a photo, get a price</h2>
       <p>Tell us what needs to go and when. We’ll text you back with a load size and a price, usually within minutes during business hours.</p>
       <div class="contact-lines">
@@ -459,7 +548,7 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 
 <section class="area">
   <div class="wrap">
-    <p class="kicker">Service area</p>
+    
     <h2>No travel fee in these cities</h2>
     <div class="chips"><span>Boise</span><span>Meridian</span><span>Nampa</span><span>Caldwell</span><span>Eagle</span><span>Star</span><span>Middleton</span><span>Garden City</span></div>
     <p>Outside these cities a travel fee applies, starting at $40.</p>
@@ -468,7 +557,7 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 
 <section id="faq">
   <div class="wrap">
-    <div class="head"><p class="kicker">Questions</p><h2>Before you book</h2></div>
+    <div class="head"><h2>Before you book</h2></div>
     <div class="faq">
       <details><summary>What’s included in the load price?</summary><p>Labor, disposal fees, travel within our service cities and cleanup. Specialty items and services are priced separately.</p></details>
       <details><summary>How do I know which load size I have?</summary><p>Text us a photo and we’ll estimate it. We confirm the size and price on site before we start, so you can say no before anything is loaded.</p></details>
@@ -515,10 +604,27 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
     { n: 'Full', yd: '14', p: [450, 500, 600], f: 100 }
   ];
   var load = document.getElementById('load'), bed = document.getElementById('bed');
+  var priceEl = document.getElementById('price'), shown = 250, raf = 0;
+  function tweenPrice(to) {
+    if (reduce) { shown = to; priceEl.textContent = '$' + to; return; }
+    cancelAnimationFrame(raf);
+    var from = shown, t0 = performance.now();
+    (function step(now) {
+      var k = Math.min(1, (now - t0) / 350);
+      shown = Math.round(from + (to - from) * k);
+      priceEl.textContent = '$' + shown;
+      if (k < 1) raf = requestAnimationFrame(step);
+    })(t0);
+  }
+  var loadManual = false;
+  load.addEventListener('pointerdown', function () { loadManual = true; });
+  load.addEventListener('keydown', function () { loadManual = true; });
   function calc() {
     var L = LOADS[+load.value];
     var t = +document.querySelector('input[name=tier]:checked').value;
-    document.getElementById('price').textContent = '$' + L.p[t];
+    tweenPrice(L.p[t]);
+    var pieces = document.querySelectorAll('#junk span'), show = Math.round((+load.value + 1) / 7 * pieces.length);
+    pieces.forEach(function (el, i) { el.classList.toggle('in', i < show); });
     var name = L.n === 'Full' ? 'full load' : L.n + ' load';
     document.getElementById('what').textContent = 'starting price for a ' + name + ' (' + L.yd + ' yd³)';
     document.getElementById('bedLabel').textContent = name;
@@ -536,10 +642,50 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 
   /* Hero parallax: photo drifts slower than the page, reverses on scroll up */
   var heroImg = document.getElementById('heroImg'), ticking = false;
+  var sun = document.getElementById('heroSun'), ridge = document.getElementById('heroRidge');
+  var pinesL = document.getElementById('pinesL'), pinesR = document.getElementById('pinesR');
+  var strip = document.getElementById('strip'), stripTrack = document.getElementById('stripTrack');
+  var steps = document.getElementById('steps'), stepsLine = document.getElementById('stepsLine');
+  var pricing = document.getElementById('pricing'), pinTrack = document.getElementById('pinTrack');
+  var pinOn = false;
+  function setPin() {
+    pinOn = !reduce && window.innerWidth > 860 && window.innerHeight >= 700;
+    pricing.classList.toggle('pin-on', pinOn);
+    document.getElementById('calcHint').textContent = pinOn
+      ? 'Our trailer holds 14 cubic yards. Keep scrolling to fill it, or drag the slider yourself.'
+      : 'Our trailer holds 14 cubic yards. Pick how full you think it will be and how easy the junk is to reach.';
+  }
+  setPin(); window.addEventListener('resize', function () { setPin(); onScroll(); });
+  if (!reduce) steps.classList.add('live');
   function onScroll() {
     ticking = false;
     var y = window.scrollY, vh = window.innerHeight;
-    if (!reduce && y < vh * 1.2) heroImg.style.translate = '0 ' + (y * 0.18) + 'px';
+    if (!reduce && y < vh * 1.4) {
+      heroImg.style.translate = '0 ' + (y * 0.18) + 'px';
+      sun.style.transform = 'translateY(' + (y * 0.42) + 'px)';
+      ridge.style.transform = 'translateY(' + (y * -0.04) + 'px)';
+      pinesL.style.translate = '0 ' + (y * -0.10) + 'px';
+      pinesR.style.translate = '0 ' + (y * -0.07) + 'px';
+    }
+    if (!reduce && window.innerWidth > 760) {
+      var sr = strip.getBoundingClientRect();
+      var sp = Math.max(0, Math.min(1, (vh - sr.top) / (vh + sr.height)));
+      var travel = Math.max(0, stripTrack.scrollWidth - strip.clientWidth);
+      stripTrack.style.transform = 'translateX(' + (-travel * sp) + 'px)';
+    } else { stripTrack.style.transform = ''; }
+    if (!reduce) {
+      var tr = steps.getBoundingClientRect();
+      var tp = Math.max(0, Math.min(1, (vh * 0.9 - tr.top) / (vh * 0.6)));
+      stepsLine.style.setProperty('--p', tp);
+      [].forEach.call(steps.children, function (el, i) { el.classList.toggle('on', tp >= (i + 0.6) / 4); });
+    }
+    if (pinOn && !loadManual) {
+      var pr = pinTrack.getBoundingClientRect();
+      var pp = (76 - pr.top) / (pr.height - (vh - 76));
+      pp = Math.max(0, Math.min(1, (pp - 0.06) / 0.82));
+      var idx = Math.round(pp * 6);
+      if (+load.value !== idx) { load.value = idx; calc(); }
+    }
     if (!reduce && !manual) {
       var r = ba.getBoundingClientRect();
       var p = (vh * 0.85 - r.top) / (vh * 0.85 - vh * 0.15 + r.height * 0.4);
