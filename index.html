@@ -10,11 +10,11 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="theme-color" content="#0F3D26">
+<meta name="theme-color" content="#10282A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="images/job-07.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/forest-3.svg">
 
 <!-- META PIXEL: paste the pixel base code here once the ad account exists.
      The page already calls fbq('track','Lead') on quote submit and
@@ -35,274 +35,327 @@
 </script>
 
 <style>
+/* Concept: a day in the Treasure Valley. The page opens on an evergreen forest at dusk,
+   the trailer drives in, trees grow as you scroll, and it ends under the night sky. */
 :root {
-  --green: #0F3D26;
-  --green-2: #17573A;
-  --ink: #13201A;
-  --paper: #F7F5EF;
-  --card: #FFFFFF;
-  --line: #DDD8CB;
-  --muted: #55625A;
-  --orange: #F26A1B;
-  --orange-dark: #B8480A;
-  --display: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
-  --text: 'Barlow', Arial, sans-serif;
+  --night: #071416;
+  --spruce: #10282A;
+  --spruce-2: #173A3C;
+  --pine: #2F4E45;
+  --sage: #5D7568;
+  --mist: #EEF2EE;
+  --mist-2: #E1E9E3;
+  --card: #FBFCFA;
+  --ink: #10282A;
+  --muted: #4A615C;
+  --line: #CBD7CF;
+  --gold: #F6B73C;
+  --gold-hi: #FFCB5E;
+  --gold-ink: #8A5300;
+  --cream: #F4F1E8;
+  --display: 'Big Shoulders Display', 'Arial Narrow', Arial, sans-serif;
+  --text: 'Figtree', Arial, sans-serif;
+  --hh: 76px;
+  --edge: max(24px, calc((100vw - 1180px) / 2 + 24px));
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; font-family: var(--text); font-size: 18px; line-height: 1.55; color: var(--ink); background: var(--paper); padding-bottom: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--hh); }
+body { margin: 0; font-family: var(--text); font-size: 18px; line-height: 1.6; color: var(--ink); background: var(--mist); overflow-x: hidden; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
-h1, h2, h3 { font-family: var(--display); font-style: italic; font-weight: 800; text-transform: uppercase; line-height: 1; margin: 0; letter-spacing: 0.01em; }
-h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
-h3 { font-size: 1.6rem; font-weight: 700; }
+h1, h2, h3 { margin: 0; }
+h1, h2 { font-family: var(--display); font-weight: 900; text-transform: uppercase; line-height: .95; letter-spacing: .005em; text-wrap: balance; }
+h2 { font-size: clamp(2.6rem, 5.4vw, 4.1rem); }
+h3 { font-weight: 700; font-size: 1.2rem; line-height: 1.3; }
 p { margin: 0; }
-.wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
-.kicker { font-weight: 700; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange-dark); margin-bottom: 10px; }
-.on-dark .kicker { color: #FFB27E; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 24px; border-radius: 8px; font: 700 1.05rem var(--text); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .15s ease, background .15s ease; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.kicker { font-weight: 700; font-size: .82rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+.dark .kicker, .dark2 .kicker, .hero .kicker { color: var(--gold); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 24px; border-radius: 999px; font: 700 1.02rem var(--text); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .2s ease, background-color .2s ease; }
 .btn:hover { transform: translateY(-2px); }
-.btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
-.btn-primary { background: var(--orange); color: #1A0D04; }
-.btn-primary:hover { background: #FF7C30; }
-.btn-ghost { border-color: #fff; color: #fff; }
-.btn-dark { background: var(--green); color: #fff; }
-section { padding: 84px 0; }
+.btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.btn-primary { background: var(--gold); color: var(--spruce); }
+.btn-primary:hover { background: var(--gold-hi); }
+.btn-ghost { border-color: rgba(244,241,232,.8); color: var(--cream); }
+.btn-ghost:hover { background: rgba(244,241,232,.12); }
+.btn-dark { background: var(--spruce); color: var(--mist); }
+section { position: relative; padding: 112px 0; background: var(--bg, var(--mist)); }
+.s-mist { --bg: var(--mist); }
+.s-mist2 { --bg: var(--mist-2); }
+.dark { --bg: var(--spruce); color: #E6EEE8; }
+.dark2 { --bg: var(--spruce-2); color: #E6EEE8; }
+.dark p, .dark2 p { color: #C3D3CA; }
+.head { display: flex; flex-direction: column; gap: 16px; max-width: 46em; margin-bottom: 44px; }
+.head p { color: var(--muted); font-size: 1.12rem; }
+
+/* Treeline dividers: each section's own colour rises into the one above it */
+.tl { position: absolute; left: 0; bottom: 100%; width: 100%; height: clamp(46px, 5.6vw, 80px); margin-bottom: -1px; color: var(--bg); fill: currentColor; pointer-events: none; display: block; }
+.tl.flip { transform: scaleX(-1); }
 
 /* Header */
-.header { position: sticky; top: 0; z-index: 50; background: rgba(247,245,239,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 76px; }
+.header { position: sticky; top: 0; z-index: 50; height: var(--hh); background: rgba(238,242,238,.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 100%; }
 .header img { height: 54px; width: auto; }
-.nav { display: flex; gap: 26px; font-weight: 600; font-size: 1rem; }
+.nav { display: flex; gap: 28px; font-weight: 600; font-size: 1rem; }
 .nav a { text-decoration: none; }
-.nav a:hover { color: var(--orange-dark); }
-.header-cta { display: flex; gap: 10px; align-items: center; }
+.nav a:hover { color: var(--gold-ink); }
+.header-cta { display: flex; gap: 12px; align-items: center; }
 .header-cta .phone { font-weight: 700; text-decoration: none; white-space: nowrap; }
-.header-cta .btn { min-height: 44px; padding: 0 16px; font-size: .98rem; }
-@media (max-width: 920px) { .nav { display: none; } }
+.header-cta .btn { min-height: 44px; padding: 0 18px; font-size: .98rem; }
+@media (max-width: 940px) { .nav { display: none; } }
 @media (max-width: 560px) { .header-cta .phone { display: none; } .header img { height: 46px; } }
 
-/* Hero: three planes (photo, shade, content) plus a price card that overlaps the fold */
-.hero { position: relative; padding: 0; background: var(--green); color: #fff; overflow: visible; }
-.hero-photo { position: absolute; inset: 0; overflow: hidden; }
-.hero-photo img { width: 100%; height: 118%; object-fit: cover; object-position: 50% 62%; will-change: transform; transform: scale(1.12); animation: heroZoom 2.4s cubic-bezier(.2,.7,.2,1) forwards; }
-@keyframes heroZoom { to { transform: scale(1); } }
-.hero-shade { position: absolute; inset: 0; background: linear-gradient(95deg, rgba(9,36,22,.95) 0%, rgba(9,36,22,.82) 42%, rgba(9,36,22,.28) 100%); }
-.hero .wrap { position: relative; padding-top: 96px; padding-bottom: 150px; }
-.hero h1 { font-size: clamp(3rem, 8.5vw, 6.4rem); max-width: 11ch; }
-.hero h1 span { color: var(--orange); display: block; }
-.hero .sub { font-size: 1.25rem; max-width: 34em; margin-top: 22px; color: #E6EEE8; }
-.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.hero .fine { font-size: .9rem; color: #C5D3CA; margin-top: 18px; max-width: 40em; }
-.reveal { animation: rise .8s ease both; }
-.reveal.r2 { animation-delay: .15s; } .reveal.r3 { animation-delay: .3s; } .reveal.r4 { animation-delay: .45s; }
-@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-.price-card { position: absolute; right: 20px; bottom: -56px; z-index: 5; width: min(360px, calc(100% - 40px)); background: var(--card); color: var(--ink); border-radius: 14px; padding: 22px 24px; box-shadow: 0 24px 60px rgba(9,36,22,.35); border-top: 6px solid var(--orange); }
-.price-card .big { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 3.2rem; line-height: 1; color: var(--green); }
-.price-card .lbl { font-weight: 700; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.price-card p.s { font-size: .98rem; color: var(--muted); margin-top: 6px; }
-.price-card a { font-weight: 700; color: var(--orange-dark); }
-@media (max-width: 760px) { .hero .wrap { padding-top: 60px; padding-bottom: 40px; } .price-card { position: relative; right: auto; bottom: auto; margin: 0 20px; transform: translateY(40px); } .hero { margin-bottom: 40px; } }
+/* ---------- Hero: eleven planes, back to front ---------- */
+.hero { --sh: clamp(270px, 47vh, 470px); padding: 0; overflow: hidden; min-height: max(680px, calc(100svh - var(--hh))); background: #102C33; color: var(--cream); }
+.sky, .dusk { position: absolute; inset: 0; }
+.sky { z-index: 0; background: linear-gradient(180deg, #0F2A31 0%, #1C474E 40%, #3D6866 58%, #A98D7D 74%, #E8A47D 85%, #F6CC98 100%); }
+.dusk { z-index: 1; background: linear-gradient(180deg, #050F11 0%, #0B1D20 55%, #1C2B2D 100%); opacity: 0; }
+.sun { position: absolute; z-index: 2; left: 60%; bottom: calc(var(--sh) * .38); width: clamp(120px, 14vw, 200px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 42%, #FFF3D1, #FFD68C 55%, #F4AE60 100%); box-shadow: 0 0 70px 26px rgba(255,204,140,.35), 0 0 220px 90px rgba(236,148,104,.28); animation: sunRise 2.8s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes sunRise { from { translate: 0 80%; opacity: .3; } to { translate: 0 0; opacity: 1; } }
+.layer { position: absolute; left: 0; bottom: 0; width: 100%; height: var(--sh); object-fit: cover; object-position: 50% 100%; transform-origin: 50% 100%; animation: grow 1.5s cubic-bezier(.2,.75,.2,1) both; pointer-events: none; }
+@keyframes grow { from { scale: 1 .15; opacity: 0; } to { scale: 1 1; opacity: 1; } }
+.l0 { z-index: 3; animation-delay: .05s; }
+.l1 { z-index: 4; animation-delay: .2s; }
+.l2 { z-index: 6; animation-delay: .35s; }
+.l3 { z-index: 8; animation-delay: .5s; }
+.l4 { z-index: 11; animation-delay: .7s; }
+.fog { position: absolute; left: -40%; width: 180%; pointer-events: none; background:
+  radial-gradient(ellipse 22% 50% at 18% 60%, rgba(247,216,190,.42), transparent 70%),
+  radial-gradient(ellipse 18% 42% at 46% 52%, rgba(247,216,190,.32), transparent 70%),
+  radial-gradient(ellipse 24% 50% at 74% 64%, rgba(247,216,190,.38), transparent 70%),
+  radial-gradient(ellipse 16% 40% at 96% 50%, rgba(247,216,190,.3), transparent 70%);
+  animation: drift 80s linear infinite alternate; }
+.fog1 { z-index: 5; bottom: calc(var(--sh) * .22); height: calc(var(--sh) * .5); }
+.fog2 { z-index: 10; bottom: -4%; height: calc(var(--sh) * .32); opacity: .45; animation-duration: 60s; animation-direction: alternate-reverse; }
+@keyframes drift { from { translate: -7% 0; } to { translate: 7% 0; } }
 
-/* Trust bar */
-.trust { padding: 96px 0 44px; }
-.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.trust-grid div { border-left: 4px solid var(--orange); padding: 4px 0 4px 16px; }
-.trust-grid b { font-family: var(--display); font-style: italic; font-size: 2.2rem; line-height: 1; display: block; color: var(--green); text-transform: uppercase; }
-.trust-grid span { color: var(--muted); font-size: 1rem; }
+.snap { position: absolute; z-index: 7; right: var(--edge); top: 52px; width: min(330px, 27vw); margin: 0; background: var(--cream); padding: 10px 10px 0; border-radius: 4px; box-shadow: 0 34px 70px rgba(5,15,17,.5); rotate: 2.5deg; animation: rise .9s .6s cubic-bezier(.2,.75,.2,1) both; }
+.snap img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.snap figcaption { font-size: .85rem; color: var(--muted); padding: 8px 4px 11px; }
+@keyframes rise { from { translate: 0 36px; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+
+.tag-wrap { position: absolute; z-index: 13; width: 228px; right: calc(var(--edge) + min(330px, 27vw) - 96px); top: calc(52px + min(330px, 27vw) * 1.25 - 36px); filter: drop-shadow(0 16px 20px rgba(5,15,17,.45)); rotate: -6deg; transform-origin: 50% -40px; animation: swing 1.9s 2.1s cubic-bezier(.3,.7,.35,1) both; }
+.tag-wrap::before { content: ""; position: absolute; left: calc(50% - 1px); top: -40px; width: 2px; height: 52px; background: var(--cream); border-radius: 2px; }
+@keyframes swing { 0% { rotate: -30deg; opacity: 0; } 12% { opacity: 1; } 50% { rotate: 4deg; } 76% { rotate: -9deg; } 100% { rotate: -6deg; } }
+.tag { background: var(--gold); color: var(--spruce); border-radius: 12px; padding: 34px 20px 18px; -webkit-mask: radial-gradient(circle 7px at 50% 15px, transparent 97%, #000 100%); mask: radial-gradient(circle 7px at 50% 15px, transparent 97%, #000 100%); }
+.tag .lbl { font-weight: 700; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
+.tag .big { font-family: var(--display); font-weight: 900; font-size: 3.2rem; line-height: 1; text-transform: uppercase; }
+.tag .s { font-size: .92rem; margin-top: 6px; color: #3B3418; }
+.tag a { font-weight: 700; }
+
+.truck { position: absolute; z-index: 9; left: 25%; bottom: calc(var(--sh) * .033); width: clamp(190px, 21vw, 300px); animation: drive 2.7s 1s cubic-bezier(.22,.8,.3,1) both; }
+.truck svg { display: block; width: 100%; height: auto; overflow: visible; }
+.truck .wheel { transform-box: fill-box; transform-origin: center; animation: spin 2.7s 1s cubic-bezier(.22,.8,.3,1) both; }
+.beam { position: absolute; left: 97%; top: 36%; width: 80%; height: 48%; background: radial-gradient(ellipse at 0% 50%, rgba(255,214,140,.6), rgba(255,214,140,0) 70%); pointer-events: none; }
+@keyframes drive { from { translate: calc(-25vw - 110%) 0; } to { translate: 0 0; } }
+@keyframes spin { from { rotate: -1100deg; } to { rotate: 0deg; } }
+
+.hero-copy { position: relative; z-index: 12; padding: clamp(40px, 7vh, 72px) 0 calc(var(--sh) * .56); will-change: transform, opacity; }
+.copy { max-width: 720px; }
+.hero h1 { font-size: clamp(3.1rem, 5.8vw, 5.1rem); color: var(--cream); }
+.hero h1 .g { color: var(--gold); display: block; }
+.hero .sub { font-size: 1.2rem; color: #DCE6DF; max-width: 33em; margin-top: 20px; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero .fine { font-size: .9rem; color: #B9CBC3; margin-top: 16px; max-width: 40em; }
+.rv { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+.rv2 { animation-delay: .12s; } .rv3 { animation-delay: .24s; } .rv4 { animation-delay: .36s; }
+@media (max-width: 1099px) {
+  .snap { display: none; }
+  .tag-wrap { position: relative; right: auto; top: auto; margin: 56px 0 0 6px; }
+}
+@media (max-width: 760px) {
+  .hero { --sh: 290px; min-height: 0; }
+  .hero h1 { font-size: clamp(2.9rem, 13vw, 3.6rem); }
+  .hero .sub { font-size: 1.08rem; }
+  .hero .cta .btn { flex: 1 1 100%; }
+  .hero .cta .btn-ghost { display: none; }
+  .hero-copy { padding-bottom: calc(var(--sh) * .6); }
+  .truck { left: 5%; width: 165px; }
+  .sun { left: 10%; width: 110px; bottom: calc(var(--sh) * .16); }
+  .tag-wrap { position: absolute; right: 16px; bottom: 16px; width: 160px; margin: 0; }
+  .tag { padding: 30px 16px 14px; }
+  .tag .big { font-size: 2.3rem; }
+  .tag .s { display: none; }
+  .trust-grid { gap: 18px 12px; }
+  .trust-grid div { padding-left: 12px; }
+  .trust-grid b { font-size: 1.4rem; white-space: nowrap; }
+}
+
+/* Trust band continues the forest floor */
+.trust { --bg: var(--spruce); padding: 44px 0 64px; color: #E6EEE8; }
+.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.trust-grid div { border-left: 3px solid var(--gold); padding: 2px 0 2px 16px; }
+.trust-grid b { font-family: var(--display); font-weight: 900; font-size: 2.4rem; line-height: 1; display: block; text-transform: uppercase; color: var(--cream); }
+.trust-grid span { color: #B9CBC3; font-size: 1rem; }
 @media (max-width: 760px) { .trust-grid { grid-template-columns: 1fr 1fr; } }
 
 /* Services */
-.head { display: flex; flex-direction: column; gap: 14px; max-width: 46em; margin-bottom: 40px; }
-.head p { color: var(--muted); font-size: 1.12rem; }
-.services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.svc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
-.svc img { aspect-ratio: 4/3; width: 100%; object-fit: cover; }
-.svc div { padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.svc { background: var(--card); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 0 var(--line), 0 22px 40px -30px rgba(16,40,42,.45); transition: transform .3s ease; }
+.svc:hover { transform: translateY(-4px); }
+.svc .ph { overflow: hidden; aspect-ratio: 4 / 3; }
+.svc img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.svc:hover img { transform: scale(1.05); }
+.svc div.t { padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 8px; }
 .svc p { color: var(--muted); font-size: 1rem; }
 @media (max-width: 980px) { .services { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .services { grid-template-columns: 1fr; } }
 
-/* Property managers band */
-.pm { background: var(--green); color: #fff; }
-.pm .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
-.pm p { color: #D6E2DA; font-size: 1.12rem; margin-top: 14px; }
+/* Property managers */
+.pm .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
+.pm p { font-size: 1.12rem; margin-top: 16px; }
 .pm ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
-.pm li { background: var(--green-2); border-radius: 10px; padding: 14px 18px; font-weight: 600; }
+.pm li { background: var(--spruce-2); border-left: 3px solid var(--gold); border-radius: 4px 12px 12px 4px; padding: 16px 20px; font-weight: 600; }
 @media (max-width: 820px) { .pm .wrap { grid-template-columns: 1fr; } }
 
-/* Before / after */
+/* Before / after + photo strip */
 .ba .wrap { display: grid; grid-template-columns: 1fr minmax(280px, 460px); gap: 56px; align-items: center; }
-.ba-copy { display: flex; flex-direction: column; gap: 16px; }
+.ba-copy { display: flex; flex-direction: column; gap: 18px; }
 .ba-copy p { color: var(--muted); font-size: 1.12rem; }
-.ba-copy ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
-.ba-frame { position: relative; aspect-ratio: 3/4; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(19,32,26,.22); background: #222; }
+.ba-copy ul { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+.ba-frame { position: relative; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; box-shadow: 0 26px 60px -24px rgba(16,40,42,.55); background: #222; }
 .ba-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .ba-after { clip-path: inset(0 0 0 var(--cut, 50%)); }
-.ba-line { position: absolute; top: 0; bottom: 0; left: var(--cut, 50%); width: 4px; margin-left: -2px; background: var(--orange); }
-.ba-tag { position: absolute; top: 14px; padding: 4px 12px; border-radius: 999px; font-weight: 700; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; background: rgba(9,36,22,.85); color: #fff; }
-.ba-tag.b { left: 14px; } .ba-tag.a { right: 14px; background: var(--orange); color: #1A0D04; }
-.ba-range { width: 100%; margin-top: 14px; accent-color: var(--orange); }
-.ba-note { font-size: .9rem; color: var(--muted); }
+.ba-line { position: absolute; top: 0; bottom: 0; left: var(--cut, 50%); width: 4px; margin-left: -2px; background: var(--gold); }
+.ba-tag { position: absolute; top: 14px; padding: 4px 12px; border-radius: 999px; font-weight: 700; font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; background: rgba(16,40,42,.85); color: #fff; }
+.ba-tag.b { left: 14px; } .ba-tag.a { right: 14px; background: var(--gold); color: var(--spruce); }
+.ba-range { width: 100%; margin-top: 14px; accent-color: #B37612; }
 @media (max-width: 820px) { .ba .wrap { grid-template-columns: 1fr; gap: 32px; } }
+.strip { margin-top: 72px; overflow: hidden; }
+.strip-track { display: flex; gap: 16px; width: max-content; padding: 0 24px; will-change: transform; }
+.strip figure { margin: 0; flex: none; width: 270px; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; background: #222; }
+.strip img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 760px) { .strip { overflow-x: auto; scroll-snap-type: x mandatory; } .strip figure { width: 70vw; scroll-snap-align: center; } }
+
+/* Growing forest: the signature. Trees rise out of the ground as you scroll. */
+.greener { padding: 120px 0 0; }
+.greener .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: end; }
+.greener p { font-size: 1.15rem; }
+.greener .note { color: #8FA99B; font-size: .95rem; }
+.grow { display: block; width: 100%; height: clamp(190px, 24vw, 330px); margin-top: 40px; }
+.gt { transform-box: fill-box; transform-origin: 50% 100%; }
+@media (max-width: 820px) { .greener .wrap { grid-template-columns: 1fr; gap: 16px; } }
 
 /* About + review */
-.about { background: #EEEAE0; }
-.about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-.about ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
-.about li { padding-left: 28px; position: relative; font-weight: 600; }
-.about li::before { content: ""; position: absolute; left: 0; top: .5em; width: 14px; height: 4px; background: var(--orange); }
-.about p { color: var(--muted); font-size: 1.1rem; margin-top: 14px; }
-.review { background: var(--card); border-radius: 14px; padding: 30px; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; }
-.stars { color: var(--orange-dark); font-size: 1.4rem; letter-spacing: 3px; }
-.review blockquote { margin: 0; font-size: 1.3rem; line-height: 1.4; font-weight: 500; }
+.about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.about ul { margin: 22px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.about li { padding-left: 26px; position: relative; font-weight: 600; }
+.about li::before { content: ""; position: absolute; left: 0; top: .32em; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 14px solid var(--pine); }
+.about p { color: var(--muted); font-size: 1.1rem; margin-top: 16px; }
+.review { background: var(--card); border-radius: 18px; padding: 32px; box-shadow: 0 22px 50px -32px rgba(16,40,42,.5); display: flex; flex-direction: column; gap: 14px; }
+.stars { color: #B37612; font-size: 1.4rem; letter-spacing: 3px; }
+.review blockquote { margin: 0; font-size: 1.3rem; line-height: 1.45; font-weight: 500; }
 .review cite { font-style: normal; font-weight: 700; }
-.review .g { color: var(--muted); font-size: .98rem; }
+.review .g { color: var(--muted); font-size: .98rem; margin-top: 0; }
 @media (max-width: 820px) { .about .wrap { grid-template-columns: 1fr; } }
 
 /* How it works */
+.steps-line { height: 6px; background: var(--line); border-radius: 3px; margin-bottom: 22px; overflow: hidden; }
+.steps-line i { display: block; height: 100%; background: var(--gold); transform-origin: 0 50%; transform: scaleX(var(--p, 1)); }
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: s; }
-.step { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 8px; counter-increment: s; }
-.step::before { content: counter(s); font-family: var(--display); font-style: italic; font-weight: 800; font-size: 2.6rem; line-height: 1; color: var(--orange-dark); }
+.step { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 8px; counter-increment: s; transition: border-color .3s ease, transform .3s ease; }
+.step::before { content: counter(s); font-family: var(--display); font-weight: 900; font-size: 2.8rem; line-height: 1; color: #B37612; }
 .step p { color: var(--muted); font-size: 1rem; }
-@media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
+.steps.live .step.on { border-color: #B37612; transform: translateY(-4px); }
+.steps.live .step:not(.on)::before { color: #A9B7AF; }
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } .steps-line { display: none; } }
 @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
 
-/* Pricing calculator */
-.pricing { background: var(--green); color: #fff; }
-.pricing .head p { color: #D6E2DA; }
+/* Pricing: the section holds while the scroll fills the trailer */
+.pricing .head p { color: #C3D3CA; }
 .calc { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-.calc-controls { display: flex; flex-direction: column; gap: 26px; }
-.calc label, .calc legend { font-weight: 700; font-size: .9rem; letter-spacing: .1em; text-transform: uppercase; color: #FFB27E; padding: 0; }
-.calc input[type=range] { width: 100%; accent-color: var(--orange); height: 32px; }
-.ticks { display: flex; justify-content: space-between; font-size: .9rem; color: #C5D3CA; }
+.calc-controls { display: flex; flex-direction: column; gap: 24px; }
+.calc label, .calc legend { font-weight: 700; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); padding: 0; }
+.calc input[type=range] { width: 100%; accent-color: var(--gold); height: 32px; }
+.ticks { display: flex; justify-content: space-between; font-size: .9rem; color: #A9BDB3; }
 .calc fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.tiers label { display: block; text-align: center; padding: 12px 6px; border: 2px solid #3B6B52; border-radius: 8px; cursor: pointer; color: #fff; letter-spacing: 0; text-transform: none; font-size: 1rem; }
+.tiers label { display: block; text-align: center; padding: 12px 6px; border: 2px solid #3B6B60; border-radius: 999px; cursor: pointer; color: #fff; letter-spacing: 0; text-transform: none; font-size: 1rem; }
 .tiers input { position: absolute; opacity: 0; }
-.tiers input:checked + label { background: var(--orange); border-color: var(--orange); color: #1A0D04; }
+.tiers input:checked + label { background: var(--gold); border-color: var(--gold); color: var(--spruce); }
 .tiers input:focus-visible + label { outline: 3px solid #fff; outline-offset: 2px; }
 .out { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-.out .price { font-family: var(--display); font-style: italic; font-weight: 800; font-size: 5rem; line-height: 1; color: var(--orange); font-variant-numeric: tabular-nums; }
-.out .what { font-size: 1.15rem; color: #E6EEE8; }
-.calc .fine { font-size: .92rem; color: #C5D3CA; }
+.out .price { font-family: var(--display); font-weight: 900; font-size: 5.4rem; line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums; }
+.out .what { font-size: 1.12rem; color: #E6EEE8; }
+.calc .fine { font-size: .92rem; color: #A9BDB3; }
 .trailer { position: relative; padding: 0 10px 46px; }
-.bed { position: relative; height: 230px; border: 6px solid #0A2416; border-top: 0; border-radius: 0 0 8px 8px; background: #1E5238; overflow: hidden; }
+.bed { position: relative; height: 230px; border: 6px solid var(--night); border-top: 0; border-radius: 0 0 10px 10px; background: #1E4842; overflow: hidden; }
 .fill { position: absolute; left: 0; right: 0; bottom: 0; height: var(--fill, 50%); background: repeating-linear-gradient(135deg, #C98A4E 0 18px, #B6763B 18px 36px); transition: height .5s cubic-bezier(.2,.7,.2,1); }
 .bed-marks { position: absolute; inset: 0; display: flex; flex-direction: column-reverse; }
-.bed-marks i { flex: 1; border-top: 2px dashed rgba(255,255,255,.28); }
-.bed-label { position: absolute; left: 14px; top: 12px; font-weight: 700; font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: rgba(9,36,22,.7); padding: 4px 10px; border-radius: 6px; }
-.wheel { position: absolute; bottom: 0; width: 62px; height: 62px; border-radius: 50%; background: #0A2416; border: 10px solid #25302A; }
-.wheel.w1 { left: 22%; } .wheel.w2 { left: calc(22% + 72px); }
-.hitch { position: absolute; right: -6px; bottom: 34px; width: 60px; height: 10px; background: #0A2416; border-radius: 4px; }
-@media (max-width: 860px) { .calc { grid-template-columns: 1fr; } .out .price { font-size: 4rem; } }
+.bed-marks i { flex: 1; border-top: 2px dashed rgba(255,255,255,.25); }
+.bed-label { position: absolute; left: 14px; top: 12px; font-weight: 700; font-size: .88rem; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: rgba(7,20,22,.7); padding: 4px 10px; border-radius: 6px; }
+.junk { position: absolute; inset: 0; pointer-events: none; }
+.junk span { position: absolute; bottom: 0; border-radius: 4px; opacity: 0; transform: translateY(-60px) rotate(var(--r, 0deg)); transition: opacity .35s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
+.junk span.in { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
+.wheel-d { position: absolute; bottom: 0; width: 62px; height: 62px; border-radius: 50%; background: var(--night); border: 10px solid #25302A; }
+.wheel-d.w1 { left: 22%; } .wheel-d.w2 { left: calc(22% + 72px); }
+.hitch { position: absolute; right: -6px; bottom: 34px; width: 60px; height: 10px; background: var(--night); border-radius: 4px; }
+.pricing.pin-on { padding: 0; }
+.pin-on .pin-track { height: 260vh; }
+.pin-on .pin-stick { position: sticky; top: var(--hh); height: calc(100vh - var(--hh)); display: flex; align-items: center; }
+.pin-on .head { margin-bottom: 24px; }
+.pin-on .calc-controls { gap: 18px; }
+@media (max-width: 860px) { .calc { grid-template-columns: 1fr; } .out .price { font-size: 4.2rem; } }
 
-/* Quote form */
+/* Quote */
 .quote .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
 .quote-copy { display: flex; flex-direction: column; gap: 16px; }
 .quote-copy p { color: var(--muted); font-size: 1.12rem; }
 .contact-lines { display: grid; gap: 8px; font-weight: 700; font-size: 1.2rem; }
-.contact-lines a { text-decoration-color: var(--orange); }
-form { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.contact-lines a { text-decoration-color: #B37612; text-underline-offset: 4px; }
+form { background: var(--card); border-radius: 18px; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; box-shadow: 0 26px 60px -36px rgba(16,40,42,.55); }
 .f { display: flex; flex-direction: column; gap: 6px; }
 .f.full { grid-column: 1 / -1; }
 .f label { font-weight: 700; font-size: .95rem; }
-.f input, .f select, .f textarea { font: 400 1.05rem var(--text); padding: 12px 14px; border: 1.5px solid #B9B3A3; border-radius: 8px; background: #fff; color: var(--ink); width: 100%; }
+.f input, .f select, .f textarea { font: 400 1.05rem var(--text); padding: 12px 14px; border: 1.5px solid #AFC0B6; border-radius: 10px; background: #fff; color: var(--ink); width: 100%; }
 .f textarea { min-height: 92px; resize: vertical; }
 form .btn { grid-column: 1 / -1; }
-.ready { grid-column: 1 / -1; background: #FBE6D3; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.ready { grid-column: 1 / -1; background: #F8E9C6; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
 .ready[hidden] { display: none; }
 .ready pre { margin: 0; white-space: pre-wrap; font: 500 1rem var(--text); background: #fff; border-radius: 8px; padding: 12px; }
 @media (max-width: 860px) { .quote .wrap { grid-template-columns: 1fr; gap: 28px; } }
 @media (max-width: 520px) { form { grid-template-columns: 1fr; padding: 20px; } }
 
 /* Area + FAQ */
-.area { background: #EEEAE0; padding: 64px 0; }
-.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.area { padding: 72px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 .chips span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 8px 18px; font-weight: 600; }
 .area p { color: var(--muted); margin-top: 16px; }
 .faq { display: grid; gap: 12px; max-width: 860px; }
-details { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 22px; }
+details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 22px; }
 summary { font-weight: 700; font-size: 1.12rem; cursor: pointer; }
 details p { color: var(--muted); margin-top: 10px; }
 
-/* Footer */
-footer { background: #0A2416; color: #D6E2DA; padding: 56px 0 110px; font-size: 1rem; }
+/* Night: the page ends under the stars */
+.night { --bg: #1D4A50; padding: 120px 0 0; color: var(--cream); background: linear-gradient(180deg, #1D4A50 0%, #163D44 45%, #11313A 100%); }
+.sky-n { position: absolute; left: 0; top: 0; width: 100%; height: 100%; fill: #F4F1E8; pointer-events: none; }
+.tw { animation: tw 3.6s ease-in-out infinite alternate; }
+@keyframes tw { from { opacity: 1; } to { opacity: .25; } }
+.night .wrap { position: relative; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.night h2 { font-size: clamp(3.2rem, 8vw, 6.4rem); }
+.night p { color: #C3D3CA; font-size: 1.15rem; max-width: 30em; }
+.night .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 10px; }
+.night-trees { display: block; width: 100%; height: clamp(90px, 11vw, 150px); margin-top: 72px; color: var(--night); fill: currentColor; }
+footer { background: var(--night); color: #B9CBC3; padding: 8px 0 110px; font-size: 1rem; }
 footer .wrap { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 36px; }
-footer b { color: #fff; display: block; margin-bottom: 8px; font-size: 1.05rem; }
+footer b { color: var(--cream); display: block; margin-bottom: 8px; font-size: 1.05rem; }
 footer p { margin-top: 4px; }
-footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top: 18px; font-size: .9rem; color: #9FB3A6; }
+footer .small { grid-column: 1 / -1; border-top: 1px solid #1C3638; padding-top: 18px; font-size: .9rem; color: #7F978C; }
 @media (max-width: 760px) { footer .wrap { grid-template-columns: 1fr; } }
 
-/* Sticky phone bar */
-.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: none; grid-template-columns: 1fr 1fr; background: var(--green); padding: 8px; gap: 8px; box-shadow: 0 -8px 24px rgba(0,0,0,.25); }
+/* Phone call bar */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: none; grid-template-columns: 1fr 1fr; background: var(--spruce); padding: 8px; gap: 8px; box-shadow: 0 -8px 24px rgba(0,0,0,.25); }
 .bar .btn { min-height: 50px; }
 @media (max-width: 760px) { .bar { display: grid; } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-photo img { animation: none; transform: none; height: 100%; }
-  .reveal { animation: none; }
-  .fill, .btn { transition: none; }
-}
-
-/* Hero planes: photo (back), sun, ridge, pines (front). Each moves at its own rate. */
-.hero { overflow: hidden; }
-.hero-sun { position: absolute; left: 58%; bottom: 40px; width: 230px; height: 230px; border-radius: 50%; background: radial-gradient(circle at 50% 45%, #FF9A4D, #F26A1B 70%); box-shadow: 0 0 90px 30px rgba(242,106,27,.35); animation: sunUp 2.2s cubic-bezier(.2,.7,.2,1) both; will-change: transform; }
-@keyframes sunUp { from { translate: 0 160px; } to { translate: 0 0; } }
-.hero-ridge { position: absolute; left: -2%; bottom: -2px; width: 104%; height: 170px; display: block; will-change: transform; }
-.hero-pines { position: absolute; bottom: -6px; height: 250px; width: auto; will-change: transform; }
-.hero-pines.l { left: -30px; }
-.hero-pines.r { right: -20px; height: 200px; transform: scaleX(-1); }
-.hero .wrap { padding-top: 64px; padding-bottom: 180px; }
-.hero h1 { font-size: clamp(2.9rem, 6.6vw, 5rem); max-width: 14ch; }
-.hero .wrap, .price-card { z-index: 4; }
-.price-card { bottom: 34px; }
-.trust { padding-top: 56px; }
-@media (max-width: 760px) {
-  .hero-sun { width: 130px; height: 130px; left: 55%; bottom: 150px; }
-  .hero-ridge { height: 90px; }
-  .hero-pines { height: 130px; } .hero-pines.r { height: 105px; }
-  .hero .wrap { padding-top: 48px; padding-bottom: 60px; }
-  .hero { overflow: visible; margin-bottom: 0; padding-bottom: 150px; }
-  .price-card { transform: none; margin: 0 20px; bottom: auto; }
-  .trust { padding-top: 40px; }
-}
-
-/* Photo strip: drifts sideways with the scroll on desktop, swipes on phones */
-.strip { margin-top: 64px; overflow: hidden; }
-.strip-track { display: flex; gap: 16px; width: max-content; padding: 0 20px; will-change: transform; }
-.strip figure { margin: 0; flex: none; width: 270px; aspect-ratio: 3/4; border-radius: 12px; overflow: hidden; background: #222; }
-.strip img { width: 100%; height: 100%; object-fit: cover; }
-@media (max-width: 760px) { .strip { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; } .strip figure { width: 70vw; scroll-snap-align: center; } }
-
-/* How it works: a line that draws across the four steps */
-.steps-line { height: 6px; background: var(--line); border-radius: 3px; margin-bottom: 22px; overflow: hidden; }
-.steps-line i { display: block; height: 100%; background: var(--orange); transform-origin: 0 50%; transform: scaleX(var(--p, 1)); }
-.step { transition: border-color .3s ease, transform .3s ease; }
-.steps.live .step { border-color: var(--line); }
-.steps.live .step.on { border-color: var(--orange); transform: translateY(-4px); }
-.steps.live .step:not(.on)::before { color: #B9B3A3; }
-@media (max-width: 900px) { .steps-line { display: none; } }
-
-/* Pricing pin: the section holds still while the scroll fills the trailer */
-.pricing.pin-on { padding: 0; }
-.pin-on .pin-track { height: 260vh; }
-.pin-on .pin-stick { position: sticky; top: 76px; height: calc(100vh - 76px); display: flex; align-items: center; }
-.pin-on .head { margin-bottom: 24px; }
-.pin-on .calc-controls { gap: 18px; }
-.junk { position: absolute; bottom: 0; left: 0; right: 0; height: 100%; pointer-events: none; }
-.junk span { position: absolute; bottom: 0; border-radius: 4px; opacity: 0; transform: translateY(-60px) rotate(var(--r, 0deg)); transition: opacity .35s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
-.junk span.in { opacity: 1; transform: translateY(0) rotate(var(--r, 0deg)); }
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-sun { animation: none; }
-  .junk span { transition: none; }
-  .step { transition: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><path id="tl1" d="M0 82H1600V90H0ZM-40 49L-37 60L-39 60L-34 71L-37 71L-32 82L-39 82L-39 89L-41 89L-41 82L-49 82L-43 71L-47 71L-41 60L-43 60ZM-23 59L-22 66L-23 67L-20 74L-22 74L-18 81L-22 81L-22 87L-25 87L-25 81L-29 81L-25 74L-27 74L-24 67L-25 66ZM8 42L11 55L9 56L15 69L11 69L17 82L9 82L9 91L7 91L7 82L-1 82L5 69L1 69L6 56L4 55ZM38 62L39 69L38 69L41 76L39 76L43 82L39 82L39 88L36 88L36 82L33 82L36 76L35 76L37 69L36 69ZM63 26L67 43L65 44L72 60L67 61L74 77L65 77L65 87L62 87L62 77L52 77L60 61L56 60L61 44L59 43ZM81 22L86 40L83 41L91 58L86 59L97 77L83 77L83 87L79 87L79 77L65 77L76 59L72 58L79 41L76 40ZM115 66L116 71L116 72L117 77L117 77L119 82L117 82L117 87L114 87L114 82L112 82L114 77L113 77L115 72L114 71ZM150 65L151 71L151 71L152 77L151 77L154 82L151 82L151 88L149 88L149 82L146 82L149 77L148 77L149 71L149 71ZM176 23L181 41L179 42L185 59L180 60L190 77L178 77L178 88L175 88L175 77L162 77L172 60L167 59L174 42L172 41ZM202 3L209 27L205 28L216 51L208 52L222 75L205 75L205 87L200 87L200 75L182 75L196 52L192 51L200 28L196 27ZM221 57L223 65L222 66L225 74L223 74L229 82L222 82L222 88L220 88L220 82L214 82L219 74L217 74L220 66L219 65ZM233 46L236 58L234 58L239 69L236 70L242 81L235 81L235 89L232 89L232 81L225 81L231 70L228 69L232 58L230 58ZM256 49L258 60L257 61L262 71L259 72L266 82L257 82L257 90L254 90L254 82L245 82L253 72L249 71L254 61L252 60ZM284 32L288 48L286 49L292 64L288 65L296 80L285 80L285 90L283 90L283 80L273 80L281 65L277 64L282 49L280 48ZM298 67L299 73L299 73L300 78L299 79L301 84L299 84L299 89L296 89L296 84L294 84L297 79L296 78L297 73L297 73ZM332 32L336 47L334 48L342 63L336 64L346 79L334 79L334 88L331 88L331 79L317 79L328 64L324 63L330 48L328 47ZM351 50L353 60L352 61L356 71L353 71L358 81L352 81L352 89L349 89L349 81L342 81L348 71L345 71L350 61L348 60ZM369 70L370 75L370 75L371 79L370 80L372 84L371 84L371 89L368 89L368 84L366 84L368 80L367 79L369 75L368 75ZM382 69L384 74L383 74L385 80L384 80L387 85L384 85L384 90L381 90L381 85L377 85L381 80L379 80L382 74L381 74ZM422 70L423 75L423 75L424 80L423 80L425 84L424 84L424 89L421 89L421 84L419 84L421 80L420 80L422 75L421 75ZM455 58L457 66L456 66L459 74L457 74L460 82L456 82L456 88L454 88L454 82L450 82L453 74L451 74L454 66L453 66ZM491 70L493 74L492 75L494 79L493 79L495 84L493 84L493 89L490 89L490 84L488 84L490 79L489 79L491 75L490 74ZM521 17L525 37L523 38L530 57L524 58L534 77L522 77L522 88L519 88L519 77L507 77L516 58L511 57L519 38L516 37ZM534 32L538 47L536 48L543 63L538 64L546 78L535 78L535 88L532 88L532 78L522 78L530 64L525 63L531 48L529 47ZM555 39L559 53L556 54L563 67L558 68L567 81L556 81L556 89L553 89L553 81L543 81L551 68L547 67L553 54L551 53ZM581 11L585 33L583 34L590 55L586 56L594 77L582 77L582 88L579 88L579 77L568 77L576 56L572 55L579 34L577 33ZM596 33L600 48L598 49L603 63L599 64L605 79L597 79L597 88L595 88L595 79L585 79L593 64L589 63L595 49L593 48ZM635 34L638 49L636 50L641 64L638 65L645 79L636 79L636 88L633 88L633 79L623 79L631 65L627 64L633 50L632 49ZM657 30L661 47L659 48L665 64L661 65L669 81L658 81L658 91L656 91L656 81L644 81L653 65L649 64L655 48L652 47ZM673 47L676 58L675 59L678 69L676 69L681 80L675 80L675 87L672 87L672 80L666 80L671 69L668 69L672 59L671 58ZM708 64L710 71L709 71L712 78L710 78L713 84L710 84L710 90L707 90L707 84L703 84L706 78L705 78L707 71L707 71ZM724 32L727 47L725 48L731 63L727 64L735 79L725 79L725 88L722 88L722 79L714 79L721 64L717 63L722 48L720 47ZM762 70L763 75L762 75L764 80L763 80L765 85L763 85L763 90L760 90L760 85L758 85L760 80L759 80L761 75L761 75ZM786 37L790 52L788 52L794 66L790 67L797 81L788 81L788 90L785 90L785 81L776 81L783 67L780 66L785 52L783 52ZM814 65L815 71L815 71L817 77L815 78L818 84L815 84L815 89L812 89L812 84L809 84L812 78L811 77L813 71L812 71ZM835 39L838 53L837 54L841 67L838 68L846 82L837 82L837 90L834 90L834 82L826 82L833 68L829 67L834 54L832 53ZM861 38L864 52L863 52L867 65L864 66L869 79L862 79L862 87L860 87L860 79L851 79L858 66L854 65L860 52L858 52ZM878 70L880 75L879 75L881 79L880 80L882 84L880 84L880 89L877 89L877 84L875 84L877 80L875 79L878 75L877 75ZM891 59L893 67L892 68L895 75L893 76L897 83L893 83L893 90L890 90L890 83L885 83L890 76L887 75L890 68L889 67ZM928 69L929 74L928 74L930 79L929 80L932 85L929 85L929 90L926 90L926 85L924 85L926 80L925 79L927 74L926 74ZM946 47L948 59L947 59L951 70L948 70L953 81L948 81L948 88L945 88L945 81L939 81L944 70L941 70L945 59L944 59ZM980 35L984 50L982 51L987 65L984 66L993 80L981 80L981 89L979 89L979 80L967 80L976 66L972 65L978 51L976 50ZM998 68L999 73L999 74L1001 79L999 79L1003 84L999 84L999 90L996 90L996 84L994 84L997 79L994 79L997 74L996 73ZM1037 37L1040 51L1038 52L1044 65L1040 66L1048 79L1038 79L1038 88L1036 88L1036 79L1027 79L1034 66L1030 65L1035 52L1033 51ZM1074 49L1077 60L1075 61L1080 72L1076 72L1083 83L1075 83L1075 91L1073 91L1073 83L1064 83L1071 72L1069 72L1073 61L1071 60ZM1107 70L1108 75L1108 75L1109 80L1108 80L1110 85L1108 85L1108 90L1106 90L1106 85L1104 85L1106 80L1105 80L1107 75L1106 75ZM1140 19L1145 39L1143 40L1150 59L1145 60L1153 80L1142 80L1142 91L1139 91L1139 80L1125 80L1136 60L1132 59L1138 40L1136 39ZM1169 63L1170 70L1169 70L1172 77L1170 77L1173 84L1170 84L1170 90L1167 90L1167 84L1164 84L1167 77L1166 77L1168 70L1167 70ZM1201 16L1206 37L1203 38L1211 57L1205 58L1214 78L1203 78L1203 89L1199 89L1199 78L1186 78L1196 58L1191 57L1199 38L1197 37ZM1217 27L1220 44L1218 45L1225 61L1221 62L1227 78L1218 78L1218 88L1215 88L1215 78L1204 78L1213 62L1209 61L1215 45L1212 44ZM1242 66L1244 72L1243 73L1245 78L1244 78L1247 84L1243 84L1243 89L1241 89L1241 84L1236 84L1241 78L1239 78L1241 73L1240 72ZM1277 27L1281 44L1279 44L1285 60L1280 61L1290 77L1278 77L1278 87L1276 87L1276 77L1265 77L1274 61L1269 60L1275 44L1273 44ZM1295 55L1297 64L1296 64L1300 73L1297 73L1301 82L1296 82L1296 89L1293 89L1293 82L1288 82L1293 73L1290 73L1294 64L1292 64ZM1333 58L1334 66L1333 67L1336 74L1334 75L1338 83L1334 83L1334 89L1331 89L1331 83L1327 83L1331 75L1329 74L1332 67L1331 66ZM1369 24L1374 43L1372 44L1378 61L1374 62L1383 79L1371 79L1371 90L1368 90L1368 79L1356 79L1365 62L1360 61L1368 44L1365 43ZM1393 8L1398 30L1396 31L1405 53L1398 54L1410 75L1395 75L1395 87L1391 87L1391 75L1377 75L1387 54L1381 53L1390 31L1387 30ZM1415 63L1417 70L1416 71L1418 78L1417 78L1421 85L1416 85L1416 91L1414 91L1414 85L1410 85L1414 78L1412 78L1414 71L1413 70ZM1440 32L1444 48L1441 48L1447 63L1443 64L1451 79L1441 79L1441 88L1438 88L1438 79L1426 79L1436 64L1431 63L1438 48L1435 48ZM1463 49L1465 60L1464 60L1468 71L1465 71L1471 82L1464 82L1464 89L1461 89L1461 82L1454 82L1460 71L1456 71L1461 60L1460 60ZM1502 60L1504 68L1503 68L1506 76L1504 76L1508 84L1504 84L1504 90L1501 90L1501 84L1496 84L1501 76L1498 76L1501 68L1501 68ZM1525 38L1529 52L1527 53L1531 66L1528 66L1534 79L1527 79L1527 88L1524 88L1524 79L1514 79L1522 66L1519 66L1524 53L1522 52ZM1538 59L1540 67L1539 68L1541 75L1540 76L1543 83L1539 83L1539 90L1537 90L1537 83L1533 83L1536 76L1534 75L1537 68L1536 67ZM1553 70L1554 75L1553 75L1555 80L1554 80L1556 85L1554 85L1554 90L1551 90L1551 85L1549 85L1551 80L1550 80L1552 75L1551 75ZM1585 20L1591 40L1587 41L1596 59L1589 60L1602 79L1587 79L1587 90L1583 90L1583 79L1567 79L1580 60L1574 59L1582 41L1579 40ZM1624 54L1627 64L1626 64L1630 74L1627 74L1633 83L1626 83L1626 90L1623 90L1623 83L1617 83L1622 74L1619 74L1623 64L1622 64Z"/><path id="tl2" d="M0 80H1600V90H0ZM-40 25L-36 43L-38 44L-31 62L-36 63L-27 80L-38 80L-38 91L-42 91L-42 80L-54 80L-44 63L-48 62L-42 44L-45 43ZM-21 64L-20 70L-20 70L-18 77L-20 77L-16 83L-20 83L-20 89L-22 89L-22 83L-26 83L-22 77L-24 77L-22 70L-22 70ZM8 66L9 71L9 71L10 76L9 76L12 81L10 81L10 87L7 87L7 81L4 81L7 76L6 76L8 71L7 71ZM20 67L21 72L21 72L22 77L21 77L24 82L21 82L21 87L19 87L19 82L16 82L19 77L18 77L19 72L19 72ZM35 62L37 68L36 69L39 75L37 76L40 82L37 82L37 88L34 88L34 82L31 82L34 76L32 75L35 69L34 68ZM59 32L63 48L61 48L66 63L62 64L69 78L60 78L60 88L57 88L57 78L46 78L55 64L52 63L57 48L55 48ZM87 3L93 27L89 28L97 51L92 52L103 75L89 75L89 88L85 88L85 75L71 75L81 52L76 51L85 28L81 27ZM116 67L117 73L116 73L119 78L117 79L120 84L117 84L117 89L114 89L114 84L112 84L115 79L113 78L115 73L114 73ZM135 72L137 76L136 77L138 81L136 81L139 85L137 85L137 90L134 90L134 85L131 85L134 81L133 81L135 77L134 76ZM161 46L164 58L162 59L167 70L163 71L170 82L162 82L162 90L160 90L160 82L153 82L158 71L156 70L160 59L159 58ZM190 26L194 42L192 43L197 59L194 60L201 76L192 76L192 85L189 85L189 76L178 76L187 60L184 59L189 43L187 42ZM207 48L210 59L208 59L212 70L209 70L215 81L208 81L208 89L206 89L206 81L199 81L205 70L202 70L206 59L204 59ZM222 60L224 67L223 68L225 75L223 75L227 83L223 83L223 89L220 89L220 83L216 83L220 75L218 75L221 68L220 67ZM237 60L239 68L238 68L241 75L239 76L242 83L238 83L238 89L235 89L235 83L231 83L235 76L233 75L236 68L235 68ZM262 41L266 53L264 54L270 66L266 66L273 78L264 78L264 86L261 86L261 78L253 78L259 66L256 66L261 54L259 53ZM275 16L281 37L278 38L286 57L280 58L291 78L277 78L277 89L273 89L273 78L259 78L270 58L266 57L273 38L270 37ZM296 48L299 58L297 59L302 68L298 69L304 79L298 79L298 86L295 86L295 79L290 79L294 69L291 68L295 59L294 58ZM325 56L327 65L326 65L329 73L327 74L331 82L326 82L326 89L323 89L323 82L319 82L323 74L321 73L324 65L322 65ZM339 41L342 53L340 54L346 66L342 66L350 78L340 78L340 86L337 86L337 78L329 78L336 66L332 66L337 54L336 53ZM361 12L367 34L364 35L372 56L367 57L380 79L364 79L364 91L359 91L359 79L345 79L356 57L348 56L359 35L356 34ZM382 46L385 57L383 57L388 68L384 68L390 78L383 78L383 86L381 86L381 78L373 78L379 68L376 68L381 57L379 57ZM411 9L418 32L414 33L422 55L418 56L429 78L414 78L414 91L409 91L409 78L394 78L405 56L397 55L408 33L405 32ZM432 67L433 73L432 73L435 79L433 79L437 85L433 85L433 90L430 90L430 85L426 85L430 79L429 79L431 73L430 73ZM451 55L454 64L452 64L456 74L454 74L459 83L453 83L453 90L450 90L450 83L444 83L449 74L447 74L450 64L449 64ZM479 51L482 60L481 61L485 69L482 70L486 78L481 78L481 85L478 85L478 78L473 78L477 70L474 69L478 61L477 60ZM504 10L510 32L507 33L514 53L510 54L523 75L507 75L507 87L502 87L502 75L489 75L499 54L494 53L502 33L499 32ZM517 55L519 63L518 64L521 71L519 71L523 79L519 79L519 85L516 85L516 79L512 79L515 71L514 71L516 64L516 63ZM543 38L548 52L545 52L551 65L547 66L554 78L545 78L545 87L542 87L542 78L532 78L540 66L536 65L542 52L539 52ZM561 68L562 72L562 72L564 77L562 77L565 82L563 82L563 86L560 86L560 82L558 82L560 77L559 77L561 72L560 72ZM591 20L595 38L593 39L599 57L595 58L607 75L593 75L593 86L589 86L589 75L578 75L587 58L580 57L588 39L587 38ZM620 49L623 61L621 61L624 72L622 72L627 83L621 83L621 91L619 91L619 83L613 83L618 72L616 72L619 61L618 61ZM640 66L641 72L641 72L643 79L641 79L644 85L641 85L641 91L639 91L639 85L636 85L639 79L637 79L639 72L639 72ZM658 11L664 33L661 35L669 56L664 57L676 78L660 78L660 90L656 90L656 78L642 78L653 57L646 56L655 35L652 33ZM673 68L674 73L673 73L675 78L674 78L676 82L674 82L674 87L671 87L671 82L670 82L672 78L671 78L672 73L672 73ZM688 6L694 28L690 29L699 51L692 52L705 73L690 73L690 85L687 85L687 73L674 73L683 52L678 51L686 29L684 28ZM702 51L705 61L704 62L708 72L705 72L709 82L704 82L704 90L701 90L701 82L696 82L700 72L697 72L701 62L700 61ZM716 70L717 75L716 75L718 79L717 79L719 83L717 83L717 88L714 88L714 83L713 83L715 79L713 79L715 75L715 75ZM740 55L742 65L741 65L745 74L742 75L746 84L742 84L742 91L739 91L739 84L734 84L739 75L737 74L740 65L738 65ZM751 69L753 73L752 74L754 78L753 78L755 83L753 83L753 88L750 88L750 83L748 83L750 78L749 78L751 74L750 73ZM773 70L774 74L774 75L775 79L774 79L776 83L775 83L775 88L772 88L772 83L771 83L773 79L772 79L773 75L772 74ZM795 68L797 73L796 74L798 79L797 79L800 85L797 85L797 90L794 90L794 85L791 85L794 79L793 79L795 74L794 73ZM820 17L824 37L822 37L828 56L824 57L834 75L822 75L822 86L819 86L819 75L809 75L816 57L811 56L818 37L816 37ZM841 70L843 75L842 76L844 81L843 81L845 86L843 86L843 91L840 91L840 86L838 86L840 81L839 81L841 76L840 75ZM870 13L875 35L872 36L879 56L875 57L885 78L872 78L872 90L868 90L868 78L856 78L866 57L861 56L867 36L865 35ZM886 25L890 42L888 43L894 59L890 60L900 76L887 76L887 86L884 86L884 76L872 76L881 60L876 59L884 43L881 42ZM897 52L900 61L898 62L902 70L899 71L904 79L899 79L899 86L896 86L896 79L891 79L896 71L893 70L896 62L895 61ZM919 68L920 73L920 73L922 78L920 78L923 83L921 83L921 88L918 88L918 83L915 83L918 78L916 78L918 73L918 73ZM935 27L939 43L936 44L942 60L939 60L946 76L936 76L936 85L933 85L933 76L923 76L930 60L927 60L933 44L930 43ZM964 15L969 36L967 37L976 57L969 58L981 78L966 78L966 90L962 90L962 78L948 78L959 58L953 57L962 37L959 36ZM993 70L994 75L993 75L995 80L994 80L996 85L994 85L994 90L991 90L991 85L989 85L992 80L990 80L992 75L991 75ZM1016 17L1021 37L1019 38L1026 57L1020 58L1031 78L1018 78L1018 89L1015 89L1015 78L1003 78L1012 58L1007 57L1015 38L1012 37ZM1043 7L1048 30L1046 31L1054 53L1048 54L1059 76L1045 76L1045 88L1041 88L1041 76L1030 76L1039 54L1035 53L1041 31L1038 30ZM1058 11L1065 33L1061 34L1071 55L1063 56L1075 78L1060 78L1060 90L1056 90L1056 78L1041 78L1052 56L1046 55L1055 34L1052 33ZM1078 63L1079 69L1078 69L1081 75L1079 75L1082 80L1079 80L1079 86L1076 86L1076 80L1074 80L1077 75L1075 75L1077 69L1076 69ZM1095 58L1097 66L1096 66L1100 74L1097 75L1102 82L1097 82L1097 89L1094 89L1094 82L1089 82L1093 75L1091 74L1094 66L1094 66ZM1112 15L1117 35L1115 36L1123 56L1117 57L1129 76L1114 76L1114 88L1110 88L1110 76L1094 76L1107 57L1102 56L1110 36L1106 35ZM1130 4L1135 27L1132 28L1141 51L1135 52L1147 74L1132 74L1132 87L1128 87L1128 74L1114 74L1125 52L1117 51L1127 28L1123 27ZM1149 71L1150 76L1150 76L1152 80L1150 80L1153 84L1151 84L1151 89L1148 89L1148 84L1146 84L1148 80L1147 80L1149 76L1148 76ZM1172 69L1174 73L1173 74L1175 78L1173 78L1176 82L1174 82L1174 87L1171 87L1171 82L1168 82L1171 78L1170 78L1172 74L1171 73ZM1183 9L1188 32L1185 33L1193 54L1188 55L1198 76L1185 76L1185 88L1181 88L1181 76L1169 76L1179 55L1173 54L1181 33L1178 32ZM1204 39L1208 53L1205 54L1212 67L1207 68L1214 81L1205 81L1205 90L1202 90L1202 81L1193 81L1200 68L1197 67L1202 54L1200 53ZM1216 5L1222 29L1219 30L1228 53L1222 54L1235 76L1219 76L1219 89L1214 89L1214 76L1197 76L1210 54L1205 53L1214 30L1209 29ZM1246 32L1249 47L1247 48L1252 62L1248 62L1255 76L1247 76L1247 86L1244 86L1244 76L1236 76L1243 62L1239 62L1244 48L1242 47ZM1267 40L1270 53L1268 53L1273 65L1269 66L1276 77L1268 77L1268 85L1265 85L1265 77L1257 77L1264 66L1260 65L1265 53L1263 53ZM1288 12L1293 34L1291 35L1299 56L1293 57L1305 77L1290 77L1290 89L1287 89L1287 77L1273 77L1284 57L1278 56L1286 35L1283 34ZM1305 48L1307 58L1306 59L1309 68L1307 69L1312 78L1306 78L1306 85L1303 85L1303 78L1298 78L1302 69L1300 68L1304 59L1302 58ZM1329 17L1334 38L1331 39L1339 58L1334 59L1345 78L1331 78L1331 90L1327 90L1327 78L1314 78L1325 59L1320 58L1326 39L1324 38ZM1353 32L1357 47L1355 48L1361 62L1356 63L1364 77L1354 77L1354 86L1352 86L1352 77L1342 77L1349 63L1345 62L1351 48L1349 47ZM1381 42L1385 55L1383 56L1388 68L1384 68L1392 80L1383 80L1383 89L1380 89L1380 80L1370 80L1378 68L1375 68L1379 56L1378 55ZM1403 50L1405 61L1404 62L1409 72L1405 72L1410 82L1404 82L1404 90L1401 90L1401 82L1394 82L1400 72L1397 72L1402 62L1400 61ZM1418 -1L1424 24L1421 25L1429 48L1424 49L1434 73L1420 73L1420 86L1416 86L1416 73L1403 73L1414 49L1406 48L1416 25L1412 24ZM1441 71L1442 75L1441 75L1443 79L1442 80L1444 84L1442 84L1442 88L1439 88L1439 84L1438 84L1440 80L1439 79L1440 75L1440 75ZM1452 49L1454 59L1453 60L1457 69L1454 70L1460 79L1453 79L1453 86L1450 86L1450 79L1444 79L1450 70L1447 69L1451 60L1449 59ZM1477 49L1479 60L1478 61L1483 71L1479 72L1485 82L1478 82L1478 90L1475 90L1475 82L1468 82L1474 72L1471 71L1475 61L1474 60ZM1493 37L1497 50L1494 51L1500 64L1497 65L1505 78L1494 78L1494 86L1491 86L1491 78L1482 78L1490 65L1486 64L1491 51L1490 50ZM1517 71L1518 75L1518 76L1519 80L1518 80L1520 84L1519 84L1519 89L1516 89L1516 84L1515 84L1516 80L1515 80L1517 76L1516 75ZM1530 65L1531 71L1530 72L1533 78L1531 78L1535 84L1531 84L1531 90L1528 90L1528 84L1525 84L1529 78L1527 78L1529 72L1529 71ZM1552 64L1553 69L1552 70L1555 75L1553 75L1556 80L1553 80L1553 85L1550 85L1550 80L1547 80L1550 75L1549 75L1551 70L1551 69ZM1565 53L1568 63L1566 64L1570 73L1567 74L1573 83L1567 83L1567 91L1564 91L1564 83L1558 83L1563 74L1560 73L1564 64L1562 63ZM1576 18L1582 37L1579 38L1587 56L1581 56L1592 75L1578 75L1578 85L1574 85L1574 75L1558 75L1571 56L1565 56L1573 38L1570 37ZM1591 59L1593 66L1592 67L1595 74L1593 74L1597 81L1593 81L1593 87L1590 87L1590 81L1584 81L1589 74L1587 74L1590 67L1589 66ZM1618 6L1625 29L1621 30L1630 52L1624 53L1637 74L1620 74L1620 87L1616 87L1616 74L1599 74L1613 53L1607 52L1616 30L1611 29ZM1636 48L1638 59L1637 59L1641 69L1638 70L1642 80L1637 80L1637 87L1635 87L1635 80L1628 80L1634 70L1631 69L1635 59L1634 59Z"/></defs></svg>
 
 <header class="header">
   <div class="wrap">
@@ -323,29 +376,65 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 
 <main id="top">
 
-<section class="hero on-dark">
-  <div class="hero-photo"><img id="heroImg" src="images/job-07.jpg" alt="Idaho Junk Solutions dump trailer loaded with boxes and junk in a Treasure Valley driveway"></div>
-  <div class="hero-shade"></div>
-  <div class="hero-sun" id="heroSun" aria-hidden="true"></div>
-  <svg class="hero-ridge" id="heroRidge" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true"><path d="M0 170V118l110-52 84 40 132-92 120 78 96-48 150 86 128-104 140 96 112-60 124 70 120-46 124 38v86z" fill="#F7F5EF"/></svg>
-  <svg class="hero-pines l" id="pinesL" viewBox="-10 0 330 230" aria-hidden="true" fill="#0F3D26"><g transform="translate(0 0)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g><g transform="translate(110 60) scale(.74)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g><g transform="translate(200 96) scale(.58)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g></svg>
-  <svg class="hero-pines r" id="pinesR" viewBox="-10 0 330 230" aria-hidden="true" fill="#17573A"><g transform="translate(0 0)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g><g transform="translate(110 60) scale(.74)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g><g transform="translate(200 96) scale(.58)"><path d="M60 0 92 62H76l30 58H88l34 66H70v44H50v-44H-2l34-66H14l30-58H28z"/></g></svg>
-  <div class="wrap">
-    <p class="kicker reveal">Boise · Meridian · Nampa · Caldwell</p>
-    <h1 class="reveal r2">Junk removal in Boise, <span>priced by the load</span></h1>
-    <p class="sub reveal r3">Local junk removal across the Treasure Valley. You see the load price up front, and we confirm it on site before anything goes on the trailer.</p>
-    <div class="cta reveal r4">
-      <a class="btn btn-primary" href="#pricing">See load prices</a>
-      <a class="btn btn-ghost" href="tel:+12085981065" data-track="Contact">Call (208) 598-1065</a>
-      <a class="btn btn-ghost" href="#quote">Text a photo for a quote</a>
-    </div>
-    <p class="fine reveal r4">Quotes by phone, text or online are estimates. The final price is confirmed on site before work begins.</p>
+<section class="hero" id="hero">
+  <div class="sky" aria-hidden="true"></div>
+  <div class="dusk" id="dusk" aria-hidden="true"></div>
+  <div class="sun" id="sun" aria-hidden="true"></div>
+  <img class="layer l0" id="L0" src="images/forest-0.svg" alt="" aria-hidden="true">
+  <img class="layer l1" id="L1" src="images/forest-1.svg" alt="" aria-hidden="true">
+  <div class="fog fog1" id="fog1" aria-hidden="true"></div>
+  <img class="layer l2" id="L2" src="images/forest-2.svg" alt="" aria-hidden="true">
+  <figure class="snap" id="snap">
+    <img src="images/job-07.jpg" alt="Idaho Junk Solutions dump trailer loaded with boxes and junk in a driveway" width="330" height="412">
+    <figcaption>One of our loads, ready for the dump.</figcaption>
+  </figure>
+  <img class="layer l3" id="L3" src="images/forest-3.svg" alt="" aria-hidden="true">
+  <div class="truck" id="truck" aria-hidden="true">
+    <svg viewBox="0 0 300 80">
+      <rect x="31" y="9" width="22" height="13" rx="2" fill="#5D7568" transform="rotate(-6 42 15)"/>
+      <rect x="58" y="7" width="42" height="12" rx="5" fill="#C9D3CD" transform="rotate(4 79 13)"/>
+      <rect x="104" y="11" width="18" height="12" rx="2" fill="#9A5B3C"/>
+      <rect x="6" y="19" width="138" height="6" rx="1" fill="#0A1A1C"/>
+      <path d="M8 24H142V60H8Z" fill="#0A1A1C"/>
+      <path d="M40 28V56M75 28V56M110 28V56" stroke="#20393A" stroke-width="2"/>
+      <path d="M142 51H170V56H142Z" fill="#0A1A1C"/>
+      <path d="M168 38H214V62H168Z" fill="#0A1A1C"/>
+      <path d="M214 62V21Q214 16 219 16H244Q248 16 251 20L264 37H286Q294 38 295 46V60H214Z" fill="#0A1A1C"/>
+      <path d="M222 22H243L253 36H222Z" fill="#E9A47D"/>
+      <rect x="291" y="52" width="7" height="6" rx="1" fill="#0A1A1C"/>
+      <circle cx="292" cy="44" r="2.8" fill="#FFD68C"/>
+      <g class="wheel"><circle cx="52" cy="64" r="11" fill="#0A1A1C" stroke="#33504B" stroke-width="3"/><path d="M45 64H59M52 57V71" stroke="#8FA49C" stroke-width="2"/></g>
+      <g class="wheel"><circle cx="80" cy="64" r="11" fill="#0A1A1C" stroke="#33504B" stroke-width="3"/><path d="M73 64H87M80 57V71" stroke="#8FA49C" stroke-width="2"/></g>
+      <g class="wheel"><circle cx="187" cy="64" r="12" fill="#0A1A1C" stroke="#33504B" stroke-width="3"/><path d="M179 64H195M187 56V72" stroke="#8FA49C" stroke-width="2"/></g>
+      <g class="wheel"><circle cx="272" cy="64" r="12" fill="#0A1A1C" stroke="#33504B" stroke-width="3"/><path d="M264 64H280M272 56V72" stroke="#8FA49C" stroke-width="2"/></g>
+    </svg>
+    <span class="beam"></span>
   </div>
-  <aside class="price-card reveal r4" aria-label="Starting price">
-    <p class="lbl">Full 14 yd³ trailer load</p>
-    <p class="big">from $450</p>
-    <p class="s">Quarter loads from $135. Labor, disposal and cleanup included. <a href="#pricing">Price your load</a></p>
-  </aside>
+  <div class="fog fog2" id="fog2" aria-hidden="true"></div>
+  <img class="layer l4" id="L4" src="images/forest-4.svg" alt="" aria-hidden="true">
+
+  <div class="hero-copy" id="heroCopy">
+    <div class="wrap">
+      <div class="copy">
+        <p class="kicker rv">Boise · Meridian · Nampa · Caldwell</p>
+        <h1 class="rv rv2">Junk removal in Boise, <span class="g">priced by the load</span></h1>
+        <p class="sub rv rv3">Local junk removal across the Treasure Valley. You see the load price up front, and we confirm it on site before anything goes on the trailer.</p>
+        <div class="cta rv rv4">
+          <a class="btn btn-primary" href="#pricing">See load prices</a>
+          <a class="btn btn-ghost" href="tel:+12085981065" data-track="Contact">Call (208) 598-1065</a>
+          <a class="btn btn-ghost" href="#quote">Text a photo for a quote</a>
+        </div>
+        <p class="fine rv rv4">Quotes by phone, text or online are estimates. The final price is confirmed on site before work begins.</p>
+      </div>
+      <div class="tag-wrap" id="tag">
+        <aside class="tag" aria-label="Starting price">
+          <p class="lbl">Full 14 yd³ trailer load</p>
+          <p class="big">from $450</p>
+          <p class="s">Quarter loads from $135. Labor, disposal and cleanup included. <a href="#pricing">Price your load</a></p>
+        </aside>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="trust" aria-label="Why customers pick us">
@@ -357,28 +446,27 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
   </div>
 </section>
 
-<section id="services">
+<section id="services" class="s-mist">
+  <svg class="tl" viewBox="0 0 1600 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#tl1"/></svg>
   <div class="wrap">
-    <div class="head">
-      
-      <h2>From one item to the jobs nobody wants</h2>
-    </div>
+    <div class="head"><h2>From one item to the jobs nobody wants</h2></div>
     <div class="services">
-      <article class="svc"><img src="images/job-01.jpg" alt="Garage full of boxes, bins and an old office chair before a cleanout" loading="lazy"><div><h3>Junk and appliance removal</h3><p>Furniture, appliances, mattresses, boxes and general household junk.</p></div></article>
-      <article class="svc"><img src="images/job-02.jpg" alt="The same garage cleared out with open floor space" loading="lazy"><div><h3>Property and estate cleanouts</h3><p>Homes, garages, basements, attics and outbuildings cleared out.</p></div></article>
-      <article class="svc"><img src="images/job-09.jpg" alt="Dump trailer loaded with debris on a job site" loading="lazy"><div><h3>Commercial cleanouts</h3><p>Offices, shops and job sites, scheduled around your hours.</p></div></article>
-      <article class="svc"><img src="images/job-10.jpg" alt="Pile of construction debris, pipe and scrap in front of a building" loading="lazy"><div><h3>Demolition and debris removal</h3><p>Sheds, decks, interior tear-outs and construction debris hauled off.</p></div></article>
+      <article class="svc"><div class="ph"><img src="images/job-01.jpg" alt="Garage full of boxes, bins and an old office chair before a cleanout" loading="lazy"></div><div class="t"><h3>Junk and appliance removal</h3><p>Furniture, appliances, mattresses, boxes and general household junk.</p></div></article>
+      <article class="svc"><div class="ph"><img src="images/job-02.jpg" alt="The same garage cleared out with open floor space" loading="lazy"></div><div class="t"><h3>Property and estate cleanouts</h3><p>Homes, garages, basements, attics and outbuildings cleared out.</p></div></article>
+      <article class="svc"><div class="ph"><img src="images/job-09.jpg" alt="Dump trailer loaded with debris on a job site" loading="lazy"></div><div class="t"><h3>Commercial cleanouts</h3><p>Offices, shops and job sites, scheduled around your hours.</p></div></article>
+      <article class="svc"><div class="ph"><img src="images/job-10.jpg" alt="Pile of construction debris, pipe and scrap in front of a building" loading="lazy"></div><div class="t"><h3>Demolition and debris removal</h3><p>Sheds, decks, interior tear-outs and construction debris hauled off.</p></div></article>
     </div>
   </div>
 </section>
 
-<section class="pm on-dark">
+<section class="pm dark">
+  <svg class="tl flip" viewBox="0 0 1600 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#tl2"/></svg>
   <div class="wrap">
     <div>
       <p class="kicker">For property managers</p>
       <h2>Eviction and rental turnover cleanouts</h2>
       <p>A unit sitting full of someone else’s stuff costs you rent. We clear it so your cleaners and painters can get in.</p>
-      <p style="margin-top:22px"><a class="btn btn-primary" href="tel:+12085981065" data-track="Contact">Call about a unit</a></p>
+      <p style="margin-top:24px"><a class="btn btn-primary" href="tel:+12085981065" data-track="Contact">Call about a unit</a></p>
     </div>
     <ul>
       <li>Priced by the load, so you can budget each turnover</li>
@@ -388,10 +476,10 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
   </div>
 </section>
 
-<section id="work" class="ba">
+<section id="work" class="ba s-mist">
+  <svg class="tl" viewBox="0 0 1600 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#tl2"/></svg>
   <div class="wrap">
     <div class="ba-copy">
-      
       <h2>A real garage, before and after</h2>
       <p>This is one of our jobs in the Treasure Valley, not a stock photo. Scroll, or drag the slider, to clear it out.</p>
       <ul>
@@ -410,7 +498,6 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
       <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
     </div>
   </div>
-
   <div class="strip" id="strip" aria-label="More photos from real jobs">
     <div class="strip-track" id="stripTrack">
       <figure><img src="images/job-09.jpg" alt="Dump trailer loaded with demolition debris" loading="lazy"></figure>
@@ -425,7 +512,18 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
   </div>
 </section>
 
-<section id="about" class="about">
+<section class="greener dark2" id="greener">
+  <svg class="tl flip" viewBox="0 0 1600 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#tl1"/></svg>
+  <div class="wrap">
+    <h2>Usable stuff gets a second life</h2>
+    <div>
+      <p>We recycle and donate what we can, so usable items stay out of the landfill wherever possible.</p>
+    </div>
+  </div>
+  <svg class="grow" id="grow" viewBox="0 0 1600 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path fill="#E1E9E3" d="M0 284H1600V300H0Z"/><path class="gt" data-o="0.19" fill="#8FA99B" d="M71 118L77 142L74 145L84 167L77 170L87 192L79 195L98 217L82 219L105 242L83 244L107 267L75 267L75 290L66 290L66 267L37 267L55 244L43 242L58 219L43 217L63 195L54 192L66 170L58 167L68 145L65 142Z"/><path class="gt" data-o="0.22" fill="#8FA99B" d="M157 177L164 201L160 203L168 225L163 227L177 250L165 251L184 274L160 274L160 290L154 290L154 274L131 274L148 251L138 250L151 227L146 225L154 203L151 201Z"/><path class="gt" data-o="0.34" fill="#8FA99B" d="M297 164L304 191L300 193L310 218L304 220L315 245L307 247L323 272L301 272L301 290L294 290L294 272L274 272L288 247L277 245L292 220L284 218L294 193L291 191Z"/><path class="gt" data-o="0.39" fill="#8FA99B" d="M396 117L402 142L398 144L409 167L401 169L414 192L403 194L417 217L406 219L430 242L409 244L435 267L400 267L400 290L391 290L391 267L363 267L380 244L362 242L383 219L373 217L386 194L377 192L390 169L384 167L392 144L389 142Z"/><path class="gt" data-o="0.43" fill="#8FA99B" d="M524 150L530 174L527 176L535 198L530 200L542 222L532 224L546 246L534 248L550 271L527 271L527 290L520 290L520 271L496 271L513 248L500 246L514 224L508 222L519 200L510 198L521 176L518 174Z"/><path class="gt" data-o="0.54" fill="#8FA99B" d="M701 141L707 166L704 168L715 192L706 194L720 218L711 220L724 244L714 246L737 269L705 269L705 290L697 290L697 269L665 269L689 246L677 244L691 220L684 218L695 194L690 192L698 168L694 166Z"/><path class="gt" data-o="0.61" fill="#8FA99B" d="M835 141L842 166L838 169L848 192L841 194L854 218L843 220L860 244L849 246L871 269L839 269L839 290L831 290L831 269L801 269L824 246L807 244L826 220L817 218L830 194L823 192L832 169L829 166Z"/><path class="gt" data-o="0.67" fill="#8FA99B" d="M937 124L944 148L940 150L950 172L943 174L955 196L946 198L962 220L948 222L971 244L952 246L974 267L942 267L942 290L933 290L933 267L900 267L923 246L909 244L926 222L913 220L929 198L920 196L932 174L926 172L935 150L932 148Z"/><path class="gt" data-o="0.67" fill="#8FA99B" d="M1035 110L1042 136L1038 138L1050 162L1042 164L1054 188L1044 190L1059 214L1048 216L1071 240L1050 242L1076 266L1040 266L1040 290L1030 290L1030 266L994 266L1020 242L1001 240L1023 216L1010 214L1026 190L1015 188L1029 164L1023 162L1032 138L1028 136Z"/><path class="gt" data-o="0.78" fill="#8FA99B" d="M1144 142L1151 167L1147 169L1157 193L1150 195L1161 218L1153 220L1168 244L1155 246L1173 270L1148 270L1148 290L1140 290L1140 270L1115 270L1132 246L1118 244L1136 220L1125 218L1139 195L1132 193L1141 169L1138 167Z"/><path class="gt" data-o="0.82" fill="#8FA99B" d="M1255 145L1261 170L1258 172L1267 195L1262 197L1273 220L1263 222L1281 245L1266 247L1287 270L1259 270L1259 290L1252 290L1252 270L1227 270L1244 247L1230 245L1246 222L1237 220L1249 197L1242 195L1252 172L1249 170Z"/><path class="gt" data-o="0.90" fill="#8FA99B" d="M1420 100L1427 124L1423 126L1431 147L1426 150L1435 171L1427 173L1444 194L1431 197L1446 218L1434 220L1459 241L1436 244L1460 265L1425 265L1425 290L1415 290L1415 265L1374 265L1405 244L1386 241L1407 220L1387 218L1410 197L1396 194L1411 173L1401 171L1415 150L1407 147L1418 126L1415 124Z"/><path class="gt" data-o="0.97" fill="#8FA99B" d="M1523 139L1529 165L1526 167L1535 191L1528 193L1543 217L1532 219L1545 243L1535 245L1553 269L1527 269L1527 290L1519 290L1519 269L1491 269L1510 245L1498 243L1513 219L1505 217L1517 193L1511 191L1519 167L1515 165Z"/><path class="gt" data-o="0.07" fill="#E1E9E3" d="M82 44L87 68L85 71L93 92L87 95L99 115L90 119L105 139L93 142L110 163L96 166L118 187L96 190L120 210L101 214L134 234L106 237L135 258L88 258L88 290L75 290L75 258L26 258L58 237L40 234L61 214L43 210L67 190L43 187L69 166L53 163L70 142L58 139L73 119L63 115L76 95L70 92L79 71L77 68Z"/><path class="gt" data-o="0.11" fill="#E1E9E3" d="M200 39L206 64L202 67L211 88L205 91L218 112L208 116L221 136L211 140L232 160L212 164L233 185L218 188L245 209L220 212L241 233L223 237L260 257L206 257L206 290L193 290L193 257L152 257L177 237L156 233L180 212L156 209L184 188L160 185L186 164L172 160L188 140L173 136L191 116L183 112L193 91L189 88L197 67L193 64Z"/><path class="gt" data-o="0.23" fill="#E1E9E3" d="M353 128L358 151L356 154L365 175L359 177L369 198L361 200L375 221L364 224L382 245L368 247L387 268L357 268L357 290L349 290L349 268L321 268L340 247L326 245L342 224L330 221L344 200L336 198L348 177L343 175L350 154L348 151Z"/><path class="gt" data-o="0.28" fill="#E1E9E3" d="M511 120L516 145L513 147L523 169L516 172L530 194L519 196L532 218L522 220L538 243L523 245L548 267L515 267L515 290L506 290L506 267L473 267L495 245L483 243L501 220L485 218L503 196L491 194L505 172L499 169L507 147L505 145Z"/><path class="gt" data-o="0.34" fill="#E1E9E3" d="M621 15L628 42L624 46L633 69L627 72L640 95L630 99L646 122L634 125L653 148L636 152L657 175L641 179L669 201L644 205L673 228L648 232L680 254L628 254L628 290L614 290L614 254L562 254L597 232L567 228L597 205L575 201L605 179L579 175L606 152L585 148L610 125L597 122L613 99L603 95L615 72L607 69L618 46L614 42Z"/><path class="gt" data-o="0.45" fill="#E1E9E3" d="M770 117L776 142L773 144L783 167L775 169L787 192L778 194L792 217L781 219L799 242L784 244L802 267L774 267L774 290L765 290L765 267L731 267L756 244L738 242L760 219L742 217L761 194L751 192L764 169L756 167L767 144L763 142Z"/><path class="gt" data-o="0.49" fill="#E1E9E3" d="M916 112L922 138L919 140L927 163L922 166L938 189L925 191L940 215L928 217L946 240L932 243L956 266L921 266L921 290L911 290L911 266L879 266L900 243L888 240L906 217L887 215L907 191L896 189L909 166L903 163L913 140L910 138Z"/><path class="gt" data-o="0.60" fill="#E1E9E3" d="M1095 13L1102 40L1098 44L1107 67L1101 71L1117 94L1104 97L1125 120L1106 124L1126 147L1109 151L1134 174L1111 178L1139 201L1116 204L1145 227L1117 231L1148 254L1102 254L1102 290L1088 290L1088 254L1034 254L1071 231L1042 227L1076 204L1052 201L1075 178L1054 174L1078 151L1062 147L1084 124L1070 120L1087 97L1075 94L1089 71L1082 67L1092 44L1088 40Z"/><path class="gt" data-o="0.71" fill="#E1E9E3" d="M1247 46L1254 70L1250 73L1259 93L1253 97L1263 117L1255 120L1269 140L1257 144L1278 164L1262 167L1281 188L1262 191L1284 211L1265 214L1289 235L1269 238L1301 258L1254 258L1254 290L1241 290L1241 258L1196 258L1225 238L1198 235L1228 214L1202 211L1231 191L1210 188L1234 167L1219 164L1238 144L1225 140L1240 120L1231 117L1243 97L1235 93L1245 73L1242 70Z"/><path class="gt" data-o="0.80" fill="#E1E9E3" d="M1395 18L1402 44L1399 48L1408 70L1402 74L1414 97L1404 100L1418 123L1406 127L1426 149L1411 153L1432 176L1411 179L1444 202L1417 206L1441 228L1417 232L1448 255L1402 255L1402 290L1388 290L1388 255L1338 255L1370 232L1348 228L1374 206L1355 202L1376 179L1353 176L1380 153L1367 149L1384 127L1370 123L1386 100L1377 97L1389 74L1381 70L1392 48L1389 44Z"/><path class="gt" data-o="0.84" fill="#E1E9E3" d="M1553 122L1559 146L1556 149L1565 171L1558 173L1571 195L1562 197L1580 219L1564 221L1587 243L1567 245L1585 267L1557 267L1557 290L1549 290L1549 267L1519 267L1540 245L1524 243L1541 221L1529 219L1544 197L1537 195L1547 173L1542 171L1550 149L1547 146Z"/></svg>
+</section>
+
+<section id="about" class="about s-mist2">
   <div class="wrap">
     <div>
       <p class="kicker">About us</p>
@@ -447,12 +545,9 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
   </div>
 </section>
 
-<section id="how">
+<section id="how" class="s-mist">
   <div class="wrap">
-    <div class="head">
-      
-      <h2>Four steps, no surprises</h2>
-    </div>
+    <div class="head"><h2>Four steps, no surprises</h2></div>
     <div class="steps-line" aria-hidden="true"><i id="stepsLine"></i></div>
     <div class="steps" id="steps">
       <div class="step"><h3>See the load price</h3><p>Use the calculator below, or text us a photo and we’ll tell you the load size.</p></div>
@@ -463,7 +558,8 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
   </div>
 </section>
 
-<section id="pricing" class="pricing on-dark">
+<section id="pricing" class="pricing dark">
+ <svg class="tl" viewBox="0 0 1600 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#tl2"/></svg>
  <div class="pin-track" id="pinTrack"><div class="pin-stick">
   <div class="wrap">
     <div class="head">
@@ -508,17 +604,17 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
           <div class="bed-marks"><i></i><i></i><i></i><i></i></div>
           <span class="bed-label" id="bedLabel">½ load</span>
         </div>
-        <span class="wheel w1"></span><span class="wheel w2"></span><span class="hitch"></span>
+        <span class="wheel-d w1"></span><span class="wheel-d w2"></span><span class="hitch"></span>
       </div>
     </div>
   </div>
  </div></div>
 </section>
 
-<section id="quote" class="quote">
+<section id="quote" class="quote s-mist">
+  <svg class="tl flip" viewBox="0 0 1600 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#tl1"/></svg>
   <div class="wrap">
     <div class="quote-copy">
-      
       <h2>Send a photo, get a price</h2>
       <p>Tell us what needs to go and when. We’ll text you back with a load size and a price, usually within minutes during business hours.</p>
       <div class="contact-lines">
@@ -546,16 +642,15 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
   </div>
 </section>
 
-<section class="area">
+<section class="area s-mist2">
   <div class="wrap">
-    
     <h2>No travel fee in these cities</h2>
     <div class="chips"><span>Boise</span><span>Meridian</span><span>Nampa</span><span>Caldwell</span><span>Eagle</span><span>Star</span><span>Middleton</span><span>Garden City</span></div>
     <p>Outside these cities a travel fee applies, starting at $40.</p>
   </div>
 </section>
 
-<section id="faq">
+<section id="faq" class="s-mist">
   <div class="wrap">
     <div class="head"><h2>Before you book</h2></div>
     <div class="faq">
@@ -567,6 +662,26 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
       <details><summary>What can’t you take?</summary><p>We don’t handle biohazard removal or disposal. If you’re not sure about an item, send us a photo and ask.</p></details>
     </div>
   </div>
+</section>
+
+<section class="night">
+  <svg class="tl" viewBox="0 0 1600 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#tl2"/></svg>
+  <svg class="sky-n" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+    <defs><mask id="moonCut"><rect width="1600" height="600" fill="#fff"/><circle cx="1262" cy="104" r="30" fill="#000"/></mask>
+    <radialGradient id="moonGlow"><stop offset="0" stop-color="#F4E9C8" stop-opacity=".35"/><stop offset="1" stop-color="#F4E9C8" stop-opacity="0"/></radialGradient></defs>
+    <circle cx="741" cy="98" r="0.9" class="tw" style="animation-delay:-4.3s"/><circle cx="10" cy="130" r="2.0"/><circle cx="129" cy="142" r="1.6"/><circle cx="65" cy="100" r="1.7" class="tw" style="animation-delay:-2.3s"/><circle cx="1160" cy="46" r="1.0"/><circle cx="178" cy="131" r="2.0"/><circle cx="945" cy="195" r="1.2" class="tw" style="animation-delay:-3.7s"/><circle cx="163" cy="78" r="1.6"/><circle cx="1161" cy="110" r="0.8"/><circle cx="427" cy="59" r="1.1" class="tw" style="animation-delay:-4.0s"/><circle cx="319" cy="223" r="1.9"/><circle cx="88" cy="100" r="1.4"/><circle cx="38" cy="111" r="2.0" class="tw" style="animation-delay:-0.6s"/><circle cx="955" cy="37" r="1.5"/><circle cx="1432" cy="57" r="0.7"/><circle cx="134" cy="139" r="0.7" class="tw" style="animation-delay:-0.4s"/><circle cx="795" cy="231" r="1.3"/><circle cx="637" cy="163" r="0.8"/><circle cx="928" cy="50" r="1.6" class="tw" style="animation-delay:-4.8s"/><circle cx="87" cy="142" r="1.5"/><circle cx="239" cy="73" r="2.1"/><circle cx="1597" cy="37" r="1.7" class="tw" style="animation-delay:-4.8s"/><circle cx="379" cy="156" r="0.8"/><circle cx="586" cy="171" r="1.5"/><circle cx="1239" cy="29" r="1.2" class="tw" style="animation-delay:-4.3s"/><circle cx="935" cy="117" r="1.3"/><circle cx="1578" cy="147" r="0.7"/><circle cx="1279" cy="88" r="1.3" class="tw" style="animation-delay:-1.1s"/><circle cx="710" cy="87" r="0.8"/><circle cx="1007" cy="33" r="1.8"/><circle cx="41" cy="197" r="1.8" class="tw" style="animation-delay:-2.5s"/><circle cx="1135" cy="68" r="1.7"/><circle cx="680" cy="64" r="2.0"/><circle cx="641" cy="98" r="1.9" class="tw" style="animation-delay:-1.8s"/><circle cx="1068" cy="49" r="1.9"/><circle cx="414" cy="20" r="2.1"/><circle cx="276" cy="237" r="2.1" class="tw" style="animation-delay:-3.0s"/><circle cx="19" cy="23" r="1.0"/><circle cx="622" cy="156" r="2.1"/><circle cx="567" cy="42" r="1.5" class="tw" style="animation-delay:-0.7s"/><circle cx="139" cy="143" r="1.7"/><circle cx="105" cy="117" r="1.7"/><circle cx="1223" cy="101" r="1.9" class="tw" style="animation-delay:-0.8s"/><circle cx="1145" cy="195" r="1.9"/><circle cx="791" cy="32" r="0.8"/><circle cx="846" cy="50" r="1.6" class="tw" style="animation-delay:-0.4s"/><circle cx="1248" cy="62" r="0.7"/><circle cx="281" cy="119" r="1.5"/><circle cx="621" cy="50" r="1.4" class="tw" style="animation-delay:-4.7s"/><circle cx="857" cy="236" r="0.7"/><circle cx="1589" cy="223" r="1.5"/><circle cx="838" cy="138" r="2.0" class="tw" style="animation-delay:-0.3s"/><circle cx="1028" cy="139" r="1.1"/><circle cx="1160" cy="182" r="0.8"/><circle cx="1119" cy="118" r="1.4" class="tw" style="animation-delay:-3.2s"/><circle cx="85" cy="154" r="1.2"/><circle cx="1406" cy="64" r="1.9"/><circle cx="1167" cy="159" r="1.9" class="tw" style="animation-delay:-0.2s"/><circle cx="955" cy="156" r="1.6"/><circle cx="651" cy="25" r="1.0"/><circle cx="973" cy="52" r="0.8" class="tw" style="animation-delay:-1.8s"/><circle cx="752" cy="138" r="0.7"/><circle cx="1241" cy="89" r="1.8"/><circle cx="14" cy="239" r="1.5" class="tw" style="animation-delay:-4.9s"/><circle cx="1578" cy="210" r="0.8"/><circle cx="558" cy="64" r="1.8"/><circle cx="307" cy="62" r="0.9" class="tw" style="animation-delay:-0.6s"/><circle cx="1501" cy="244" r="1.2"/><circle cx="1186" cy="121" r="1.4"/><circle cx="591" cy="162" r="1.0" class="tw" style="animation-delay:-1.3s"/>
+    <circle cx="1246" cy="114" r="90" fill="url(#moonGlow)"/>
+    <circle cx="1246" cy="114" r="34" fill="#F4E9C8" mask="url(#moonCut)"/>
+  </svg>
+  <div class="wrap">
+    <h2>Let’s get it gone</h2>
+    <p>Call, text or send a photo. Same-day pickup when we have room.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#quote">Get a price</a>
+      <a class="btn btn-ghost" href="tel:+12085981065" data-track="Contact">Call (208) 598-1065</a>
+    </div>
+  </div>
+  <svg class="night-trees" viewBox="0 0 1600 90" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#tl1"/></svg>
 </section>
 
 </main>
@@ -588,6 +703,8 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 <script>
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(id) { return document.getElementById(id); }
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
   function track(name) { if (typeof window.fbq === 'function') window.fbq('track', name); }
   document.querySelectorAll('[data-track]').forEach(function (el) {
     el.addEventListener('click', function () { track(el.getAttribute('data-track')); });
@@ -603,8 +720,7 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
     { n: '⅞', yd: '12.25', p: [400, 445, 535], f: 87.5 },
     { n: 'Full', yd: '14', p: [450, 500, 600], f: 100 }
   ];
-  var load = document.getElementById('load'), bed = document.getElementById('bed');
-  var priceEl = document.getElementById('price'), shown = 250, raf = 0;
+  var load = $('load'), bed = $('bed'), priceEl = $('price'), shown = 250, raf = 0;
   function tweenPrice(to) {
     if (reduce) { shown = to; priceEl.textContent = '$' + to; return; }
     cancelAnimationFrame(raf);
@@ -626,8 +742,8 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
     var pieces = document.querySelectorAll('#junk span'), show = Math.round((+load.value + 1) / 7 * pieces.length);
     pieces.forEach(function (el, i) { el.classList.toggle('in', i < show); });
     var name = L.n === 'Full' ? 'full load' : L.n + ' load';
-    document.getElementById('what').textContent = 'starting price for a ' + name + ' (' + L.yd + ' yd³)';
-    document.getElementById('bedLabel').textContent = name;
+    $('what').textContent = 'starting price for a ' + name + ' (' + L.yd + ' yd³)';
+    $('bedLabel').textContent = name;
     bed.style.setProperty('--fill', L.f + '%');
   }
   load.addEventListener('input', calc);
@@ -635,61 +751,85 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
   calc();
 
   /* Before/after: follows the scroll until the visitor grabs the slider */
-  var ba = document.getElementById('ba'), range = document.getElementById('baRange'), manual = false;
+  var ba = $('ba'), range = $('baRange'), manual = false;
   function setCut(v) { ba.style.setProperty('--cut', (100 - v) + '%'); }
   range.addEventListener('input', function () { manual = true; setCut(+range.value); });
   setCut(50);
 
-  /* Hero parallax: photo drifts slower than the page, reverses on scroll up */
-  var heroImg = document.getElementById('heroImg'), ticking = false;
-  var sun = document.getElementById('heroSun'), ridge = document.getElementById('heroRidge');
-  var pinesL = document.getElementById('pinesL'), pinesR = document.getElementById('pinesR');
-  var strip = document.getElementById('strip'), stripTrack = document.getElementById('stripTrack');
-  var steps = document.getElementById('steps'), stepsLine = document.getElementById('stepsLine');
-  var pricing = document.getElementById('pricing'), pinTrack = document.getElementById('pinTrack');
-  var pinOn = false;
+  /* Hero: each plane moves at its own rate, the sun sets and the truck drives on as you scroll.
+     Everything reverses on the way back up. */
+  var hero = $('hero'), sun = $('sun'), dusk = $('dusk'), copy = $('heroCopy'), snap = $('snap'), tag = $('tag');
+  var layers = [$('L0'), $('L1'), $('L2'), $('L3')], rates = [0.36, 0.27, 0.17, 0.07];
+  var L4 = $('L4'), fog1 = $('fog1'), fog2 = $('fog2'), truck = $('truck');
+  var wheels = truck.querySelectorAll('.wheel');
+  var grow = $('grow'), trees = [].slice.call(document.querySelectorAll('.gt'));
+  var strip = $('strip'), stripTrack = $('stripTrack'), steps = $('steps'), stepsLine = $('stepsLine');
+  var pricing = $('pricing'), pinTrack = $('pinTrack'), pinOn = false, ticking = false;
+  var hh = 76;
   function setPin() {
     pinOn = !reduce && window.innerWidth > 860 && window.innerHeight >= 700;
     pricing.classList.toggle('pin-on', pinOn);
-    document.getElementById('calcHint').textContent = pinOn
+    $('calcHint').textContent = pinOn
       ? 'Our trailer holds 14 cubic yards. Keep scrolling to fill it, or drag the slider yourself.'
       : 'Our trailer holds 14 cubic yards. Pick how full you think it will be and how easy the junk is to reach.';
   }
-  setPin(); window.addEventListener('resize', function () { setPin(); onScroll(); });
+  setPin();
+  window.addEventListener('resize', function () { setPin(); onScroll(); });
   if (!reduce) steps.classList.add('live');
+
   function onScroll() {
     ticking = false;
     var y = window.scrollY, vh = window.innerHeight;
-    if (!reduce && y < vh * 1.4) {
-      heroImg.style.translate = '0 ' + (y * 0.18) + 'px';
-      sun.style.transform = 'translateY(' + (y * 0.42) + 'px)';
-      ridge.style.transform = 'translateY(' + (y * -0.04) + 'px)';
-      pinesL.style.translate = '0 ' + (y * -0.10) + 'px';
-      pinesR.style.translate = '0 ' + (y * -0.07) + 'px';
+    if (!reduce) {
+      var H = hero.offsetHeight;
+      if (y < H + 80) {
+        var k = clamp(y / H);
+        sun.style.transform = 'translateY(' + (y * 0.45) + 'px)';
+        dusk.style.opacity = (k * 0.7).toFixed(3);
+        for (var i = 0; i < 4; i++) layers[i].style.transform = 'translateY(' + (y * rates[i]) + 'px)';
+        fog1.style.transform = 'translateY(' + (y * 0.22) + 'px)';
+        fog2.style.transform = 'translateY(' + (y * 0.04) + 'px)';
+        snap.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+        tag.style.transform = window.innerWidth >= 1100 ? 'translateY(' + (y * 0.12) + 'px)' : '';
+        var dx = y * 0.85, rpx = 12 * truck.offsetWidth / 300, deg = dx / rpx * 57.2958;
+        truck.style.transform = 'translate(' + dx + 'px,' + (y * 0.07) + 'px)';
+        wheels.forEach(function (w) { w.style.transform = 'rotate(' + deg.toFixed(1) + 'deg)'; });
+        L4.style.transform = 'translateY(' + (-y * 0.05) + 'px) scale(' + (1 + k * 0.14).toFixed(4) + ')';
+        copy.style.transform = 'translateY(' + (y * 0.22) + 'px)';
+        copy.style.opacity = Math.max(0, 1 - k * 1.15).toFixed(3);
+      }
+      /* Growing forest: back row trails the front row a little */
+      var gr = grow.getBoundingClientRect();
+      if (gr.top < vh + 50 && gr.bottom > -50) {
+        var gp = clamp((vh - gr.top) / (vh * 0.62));
+        trees.forEach(function (t) {
+          var g = clamp((gp - (+t.getAttribute('data-o')) * 0.6) / 0.4);
+          t.style.transform = 'scaleY(' + (0.02 + 0.98 * g).toFixed(3) + ')';
+        });
+      }
     }
     if (!reduce && window.innerWidth > 760) {
       var sr = strip.getBoundingClientRect();
-      var sp = Math.max(0, Math.min(1, (vh - sr.top) / (vh + sr.height)));
+      var sp = clamp((vh - sr.top) / (vh + sr.height));
       var travel = Math.max(0, stripTrack.scrollWidth - strip.clientWidth);
       stripTrack.style.transform = 'translateX(' + (-travel * sp) + 'px)';
     } else { stripTrack.style.transform = ''; }
     if (!reduce) {
       var tr = steps.getBoundingClientRect();
-      var tp = Math.max(0, Math.min(1, (vh * 0.9 - tr.top) / (vh * 0.6)));
+      var tp = clamp((vh * 0.9 - tr.top) / (vh * 0.6));
       stepsLine.style.setProperty('--p', tp);
       [].forEach.call(steps.children, function (el, i) { el.classList.toggle('on', tp >= (i + 0.6) / 4); });
     }
     if (pinOn && !loadManual) {
       var pr = pinTrack.getBoundingClientRect();
-      var pp = (76 - pr.top) / (pr.height - (vh - 76));
-      pp = Math.max(0, Math.min(1, (pp - 0.06) / 0.82));
+      var pp = (hh - pr.top) / (pr.height - (vh - hh));
+      pp = clamp((pp - 0.06) / 0.82);
       var idx = Math.round(pp * 6);
       if (+load.value !== idx) { load.value = idx; calc(); }
     }
     if (!reduce && !manual) {
       var r = ba.getBoundingClientRect();
-      var p = (vh * 0.85 - r.top) / (vh * 0.85 - vh * 0.15 + r.height * 0.4);
-      p = Math.max(0, Math.min(1, p));
+      var p = clamp((vh * 0.85 - r.top) / (vh * 0.7 + r.height * 0.4));
       var v = Math.round(8 + p * 84);
       range.value = v; setCut(v);
     }
@@ -699,16 +839,16 @@ footer .small { grid-column: 1 / -1; border-top: 1px solid #214433; padding-top:
 
   /* Quote form: builds a text message the visitor sends with a photo.
      To email leads as well, post these fields to a form service here. */
-  var form = document.getElementById('quoteForm');
+  var form = $('quoteForm');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!form.reportValidity()) return;
     var d = new FormData(form);
     var msg = 'JUNK quote request\nName: ' + d.get('name') + '\nPhone: ' + d.get('phone') + '\nCity: ' + d.get('city') + '\nWhen: ' + d.get('when') + '\nWhat: ' + d.get('what');
-    document.getElementById('readyMsg').textContent = msg;
-    document.getElementById('smsLink').href = 'sms:+12085981065?&body=' + encodeURIComponent(msg);
-    document.getElementById('ready').hidden = false;
-    document.getElementById('ready').scrollIntoView({ block: 'nearest' });
+    $('readyMsg').textContent = msg;
+    $('smsLink').href = 'sms:+12085981065?&body=' + encodeURIComponent(msg);
+    $('ready').hidden = false;
+    $('ready').scrollIntoView({ block: 'nearest' });
   });
 })();
 </script>
